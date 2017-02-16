@@ -13,6 +13,21 @@ namespace Plugin.SimpleAudioPlayer
   {
         AVAudioPlayer player;
 
+        public double Duration
+        { get { return player == null ? 0 : player.Duration; } }
+
+        public double CurrentPosition
+        { get { return player == null ? 0 : player.CurrentTime; } }
+
+        public double Volume
+        {
+            get { return player == null ? 0 : player.Volume; }
+            set { SetVolume(value); }
+        }
+
+        public bool IsPlaying
+        { get { return player == null ? false : player.Playing; } }
+
         public bool Load(Stream audioStream)
         {
             var data = NSData.FromStream(audioStream);
@@ -46,8 +61,18 @@ namespace Plugin.SimpleAudioPlayer
             player?.Stop();
         }
 
+        public void Seek (double position)
+        {
+            if (player == null)
+                return;
+            player.CurrentTime = position;
+        }
+
         public void SetVolume(double volume)
         {
+            if (player == null)
+                return;
+
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 

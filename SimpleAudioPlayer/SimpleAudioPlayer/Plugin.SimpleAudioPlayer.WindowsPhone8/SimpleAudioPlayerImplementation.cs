@@ -11,46 +11,74 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
-        MediaElement element;
+        MediaElement player;
+
+        public double Duration
+        { get { return player == null ? 0 : player.Position.TotalSeconds; } }
+
+        public double CurrentPosition
+        { get { return player == null ? 0 : player.NaturalDuration.TimeSpan.TotalSeconds; } }
+
+        public double Volume
+        {
+            get { return player == null ? 0 : player.Volume; }
+            set { SetVolume(value); }
+        }
+
+        public bool IsPlaying
+        {
+            get
+            {
+                if (player == null )
+                    return false;
+                return player.CurrentState == MediaElementState.Playing; //might need to expand
+            }
+        }
 
         public bool Load(Stream audioStream)
         {
-            if (element == null)
+            if (player == null)
             {
-                element = new MediaElement() { AutoPlay = false };
+                player = new MediaElement() { AutoPlay = false };
             }
 
-            element.SetSource(audioStream);
+            player.SetSource(audioStream);
 
-            return (element == null) ? false : true;
+            return (player == null) ? false : true;
         }
 
         public void Play()
         {
-            if (element == null)
+            if (player == null)
                 return;
 
-            if (element.CurrentState == MediaElementState.Playing)
+            if (player.CurrentState == MediaElementState.Playing)
             {
-                element.Stop();
+                player.Stop();
             }
             else
             {
-                element.Play();
+                player.Play();
             }
         }
 
         public void Pause()
         {
-            element?.Pause();
+            player?.Pause();
         }
         public void Stop()
         {
-            if (element != null)
+            if (player != null)
             {
-                element.Stop();
-                element.Position = TimeSpan.Zero;
+                player.Stop();
+                player.Position = TimeSpan.Zero;
             }
+        }
+
+        public void Seek (double position)
+        {
+            if (player != null && player.CanSeek)
+                player.Position = TimeSpan.FromSeconds(position);
         }
 
         public void SetVolume(double volume)
@@ -58,7 +86,7 @@ namespace Plugin.SimpleAudioPlayer
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 
-            element.Volume = volume;
+            player.Volume = volume;
         }
     }
 }

@@ -5,14 +5,30 @@ using System.IO;
 
 namespace Plugin.SimpleAudioPlayer
 {
-  /// <summary>
-  /// Implementation for Feature
-  /// </summary>
-  public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
-  {
+    /// <summary>
+    /// Implementation for Feature
+    /// </summary>
+    public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
+    {
         Android.Media.MediaPlayer player;
 
         static int index = 0;
+
+        public double Duration
+        { get { return player == null ? 0 : player.Duration; } }
+
+        public double CurrentPosition
+        { get { return player == null ? 0 : player.CurrentPosition; } }
+
+        public double Volume
+        {
+            get { return _volume; }
+            set { SetVolume(_volume = value); }
+        }
+        double _volume = 0.5;
+
+        public bool IsPlaying
+        { get { return player == null ? false : player.IsPlaying; } }
 
         public bool Load(Stream audioStream)
         {
@@ -55,7 +71,13 @@ namespace Plugin.SimpleAudioPlayer
             player?.Pause();
         }
 
-        public void SetVolume(double volume)
+        public void Seek (double position)
+        {
+            if (player != null)
+                player.SeekTo((int)position);
+        }
+
+        void SetVolume(double volume)
         {
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);

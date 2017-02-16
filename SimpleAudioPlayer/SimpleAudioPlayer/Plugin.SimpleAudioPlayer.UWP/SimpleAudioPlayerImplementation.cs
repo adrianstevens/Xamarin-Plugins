@@ -1,7 +1,7 @@
 using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
-using Windows.UI.Xaml.Controls;
+using Windows.Media.Playback;
 
 namespace Plugin.SimpleAudioPlayer
 {
@@ -10,48 +10,81 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
-        MediaElement element;
+        MediaPlayer player;
+
+        public double Duration
+        { get { return player == null ? 0 : player.PlaybackSession.Position.TotalSeconds; } }
+
+        public double CurrentPosition
+        { get { return player == null ? 0 : player.PlaybackSession.NaturalDuration.TotalSeconds; } }
+
+        public double Volume
+        {
+            get { return player == null ? 0 : player.Volume; }
+            set { SetVolume(value); }
+        }
+
+        public bool IsPlaying
+        {
+            get
+            {
+                if (player == null || player.PlaybackSession == null)
+                    return false;
+                return player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing; //might need to expand
+            }
+        }
 
         public bool Load(Stream audioStream)
         {
-            if (element == null)
+            if (player == null)
             {
-                element = new MediaElement() { AutoPlay = false };
+                player = new MediaPlayer() { AutoPlay = false };
             }
 
-            element.SetSource(audioStream.AsRandomAccessStream(), "");
+            //TODO
+            player.SetStreamSource(audioStream.AsRandomAccessStream());
 
-            return (element == null) ? false : true;
+            return (player == null) ? false : true;
         }
 
         public void Play()
         {
-            if (element == null)
+            if (player == null)
                 return;
 
-            if (element.CurrentState == Windows.UI.Xaml.Media.MediaElementState.Playing)
+            if (player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing)
             {
-                element.Stop();
-                element.Play();
+                Pause();
+                Seek(0);
+                player.Play();
             }
             else
             {
-                element.Play();
+                player.Play();
             }
         }
 
         public void Pause()
         {
-            element?.Pause();
+            player?.Pause();
         }
 
         public void Stop()
         {
-            if (element != null)
+            if (player != null)
             {
-                element.Stop();
-                element.Position = TimeSpan.Zero;
+                Pause();
+                Seek(0);
             }
+        }
+
+        public void Seek (double position)
+        {
+            if (player == null || player.PlaybackSession == null)
+                return;
+
+            if (player.PlaybackSession.CanSeek)
+                player.PlaybackSession.Position = TimeSpan.FromSeconds(position);
         }
 
         public void SetVolume(double volume)
@@ -59,7 +92,7 @@ namespace Plugin.SimpleAudioPlayer
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 
-            element.Volume = volume;
+            player.Volume = volume;
         }
     }
 }

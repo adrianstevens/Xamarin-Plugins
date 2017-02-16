@@ -8,6 +8,13 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
   /// </summary>
   public interface ISimpleAudioPlayer
   {
+        double Duration { get; }
+        double CurrentPosition { get; }
+        double Volume { get; set; }
+
+        bool IsPlaying { get; }
+
+
         bool Load(Stream audioStream);
 
         void Play();
@@ -15,5 +22,7 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
         void Pause();
 
         void Stop();
+
+        void Seek(double position);
     }
 }
