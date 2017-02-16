@@ -1,3 +1,4 @@
+
 # Xamarin-Plugins
 Cross-platform Plugins for Xamarin and Xamarin.Forms
 
@@ -19,3 +20,6 @@ var player1 = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioP
 var player2 = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
 ...
 ```
+
+Or see it used in a sample app:
+https://github.com/adrianstevens/Xamarin-Forms/tree/master/DrumPad2
