@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xam.Plugin.SimpleAudioPlayer</id>
-		<version>0.2.0-alpha</version>
+		<version>0.2.1-alpha</version>
 		<title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
@@ -12,7 +12,6 @@
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
     </licenseUrl>
     <projectUrl>https://github.com/adrianstevens/Xamarin-Plugins</projectUrl>
-		<!--Default Icon, a template can be found:  https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Plugins-Templates/icons/plugin_icon.png-->
     <iconUrl>https://raw.githubusercontent.com/adrianstevens/Xamarin-Plugins/master/SimpleAudioPlayer/icon_128.png</iconUrl>
 
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>

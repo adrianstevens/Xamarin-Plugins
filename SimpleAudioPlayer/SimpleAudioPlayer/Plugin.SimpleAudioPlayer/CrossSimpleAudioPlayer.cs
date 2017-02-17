@@ -26,7 +26,7 @@ namespace Plugin.SimpleAudioPlayer
       }
     }
 
-    static ISimpleAudioPlayer CreateSimpleAudioPlayer()
+    public static ISimpleAudioPlayer CreateSimpleAudioPlayer()
     {
 #if PORTABLE
         return null;
