@@ -35,6 +35,9 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        public bool CanSeek
+        { get { return player == null ? false : player.CanSeek; } }
+
         public bool Load(Stream audioStream)
         {
             if (player == null)

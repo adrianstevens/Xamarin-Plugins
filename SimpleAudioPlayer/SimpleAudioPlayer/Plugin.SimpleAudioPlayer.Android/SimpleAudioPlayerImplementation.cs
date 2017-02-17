@@ -30,6 +30,9 @@ namespace Plugin.SimpleAudioPlayer
         public bool IsPlaying
         { get { return player == null ? false : player.IsPlaying; } }
 
+        public bool CanSeek
+        { get { return player == null ? false : true; } }
+
         public bool Load(Stream audioStream)
         {
             //cache to the file system

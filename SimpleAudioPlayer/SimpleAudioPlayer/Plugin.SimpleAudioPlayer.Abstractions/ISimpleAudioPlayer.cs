@@ -14,6 +14,8 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
 
         bool IsPlaying { get; }
 
+        bool CanSeek { get; }
+
 
         bool Load(Stream audioStream);
 
