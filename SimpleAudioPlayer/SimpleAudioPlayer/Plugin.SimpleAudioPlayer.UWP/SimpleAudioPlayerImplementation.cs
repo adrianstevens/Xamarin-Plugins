@@ -1,6 +1,7 @@
 using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
+using Windows.Media.Core;
 using Windows.Media.Playback;
 
 namespace Plugin.SimpleAudioPlayer
@@ -35,21 +36,39 @@ namespace Plugin.SimpleAudioPlayer
         }
 
         public bool CanSeek
-        { get { return player == null ? false : player.CanSeek; } }
+        { get { return player == null ? false : player.PlaybackSession.CanSeek; } }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file from a stream
+        ///</Summary>
         public bool Load(Stream audioStream)
         {
-            if (player == null)
-            {
-                player = new MediaPlayer() { AutoPlay = false };
-            }
+            player?.Dispose();
+            player = new MediaPlayer() { AutoPlay = false };
 
-            //TODO
-            player.SetStreamSource(audioStream.AsRandomAccessStream());
+            //player.SetStreamSource(audioStream.AsRandomAccessStream());
 
-            return (player == null) ? false : true;
+            player.Source = MediaSource.CreateFromStream(audioStream.AsRandomAccessStream(), string.Empty);
+
+            return (player == null || player.Source == null) ? false : true;
         }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file from assets folder in the UWP project
+        ///</Summary>
+        public bool Load(string fileName)
+        {
+            player?.Dispose();
+            player = new MediaPlayer() { AutoPlay = false };
+
+            player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/" + fileName));
+ 
+            return (player == null || player.Source == null) ? false : true;
+        }
+
+        ///<Summary>
+        /// Begin playback or resume if paused
+        ///</Summary>
         public void Play()
         {
             if (player == null)
@@ -67,11 +86,17 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        ///<Summary>
+        /// Pause playback if playing (does not resume)
+        ///</Summary>
         public void Pause()
         {
             player?.Pause();
         }
 
+        ///<Summary>
+        /// Stop playack and set the current position to the beginning
+        ///</Summary>
         public void Stop()
         {
             if (player != null)
@@ -81,6 +106,9 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        ///<Summary>
+        /// Seek a position in seconds in the currently loaded sound file 
+        ///</Summary>
         public void Seek (double position)
         {
             if (player == null || player.PlaybackSession == null)

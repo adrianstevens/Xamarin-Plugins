@@ -62,6 +62,17 @@ namespace Plugin.SimpleAudioPlayer
         }
 
         ///<Summary>
+        /// Load wave or mp3 audio file from the Android assets folder
+        ///</Summary>
+        public bool Load(string fileName)
+        {
+            player?.Dispose();
+            player = AVAudioPlayer.FromUrl(NSUrl.FromFilename(fileName));
+
+            return (player == null) ? false : true;
+        }
+
+        ///<Summary>
         /// Begin playback or resume if paused
         ///</Summary>
         public void Play()
@@ -102,10 +113,6 @@ namespace Plugin.SimpleAudioPlayer
             player.CurrentTime = position;
         }
 
-        ///<Summary>
-        /// Sets the playback volume as a double between 0 and 1
-        /// Sets both left and right channels
-        ///</Summary>
         public void SetVolume(double volume)
         {
             if (player == null)

@@ -50,6 +50,19 @@ namespace Plugin.SimpleAudioPlayer
             return (player == null) ? false : true;
         }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file from Assets folder
+        ///</Summary>
+        public bool Load(string fileName)
+        {
+            if (player == null)
+                player = new MediaElement() { AutoPlay = false };
+
+            player.Source = new Uri("ms-appx:///Assets/" + fileName);
+
+            return (player == null || player.Source == null) ? false : true;
+        }
+
         public void Play()
         {
             if (player == null)

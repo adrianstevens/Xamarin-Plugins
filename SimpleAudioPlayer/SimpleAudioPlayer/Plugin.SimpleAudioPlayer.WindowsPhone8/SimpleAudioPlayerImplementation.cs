@@ -38,16 +38,30 @@ namespace Plugin.SimpleAudioPlayer
         public bool CanSeek
         { get { return player == null ? false : player.CanSeek; } }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file as a stream
+        ///</Summary>
         public bool Load(Stream audioStream)
         {
-            if (player == null)
-            {
+            if(player == null)
                 player = new MediaElement() { AutoPlay = false };
-            }
 
             player.SetSource(audioStream);
 
             return (player == null) ? false : true;
+        }
+
+        ///<Summary>
+        /// Load wave or mp3 audio file from Assets folder
+        ///</Summary>
+        public bool Load(string fileName)
+        {
+            if (player == null)
+                player = new MediaElement() { AutoPlay = false };
+
+            player.Source = new Uri("ms-appx:///Assets/" + fileName);
+
+            return (player == null || player.Source == null) ? false : true;
         }
 
         public void Play()

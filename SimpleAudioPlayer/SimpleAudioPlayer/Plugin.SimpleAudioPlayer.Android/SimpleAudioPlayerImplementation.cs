@@ -1,3 +1,4 @@
+using Android.Content.Res;
 using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
@@ -33,6 +34,9 @@ namespace Plugin.SimpleAudioPlayer
         public bool CanSeek
         { get { return player == null ? false : true; } }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file as a stream
+        ///</Summary>
         public bool Load(Stream audioStream)
         {
             //cache to the file system
@@ -44,12 +48,32 @@ namespace Plugin.SimpleAudioPlayer
             //load the cached audio into MediaPlayer
             player?.Dispose();
             player = new Android.Media.MediaPlayer();
-            player.SetDataSource(path);
-            player.Prepare();
+            player?.SetDataSource(path);
+            player?.Prepare();
 
-            return true;
+            return (player == null) ? false : true;
         }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file from the iOS Resources folder
+        ///</Summary>
+        public bool Load(string fileName)
+        {
+            AssetFileDescriptor afd = Android.App.Application.Context.Assets.OpenFd(fileName);
+
+            player?.Dispose();
+            player = new Android.Media.MediaPlayer();
+
+            player?.SetDataSource(afd.FileDescriptor, afd.StartOffset, afd.Length);
+            
+            player?.Prepare();
+
+            return (player == null) ? false : true;
+        }
+
+        ///<Summary>
+        /// Begin playback or resume if paused
+        ///</Summary>
         public void Play()
         {
             if (player == null)
@@ -64,6 +88,9 @@ namespace Plugin.SimpleAudioPlayer
             player.Start();
         }
 
+        ///<Summary>
+        /// Stop playack and set the current position to the beginning
+        ///</Summary>
         public void Stop()
         {
             player?.Stop();
@@ -71,11 +98,18 @@ namespace Plugin.SimpleAudioPlayer
             player?.SeekTo(0);
         }
 
+        ///<Summary>
+        /// Pause playback if playing (does not resume)
+        ///</Summary>
         public void Pause()
         {
             player?.Pause();
         }
 
+        ///<Summary>
+        /// Sets the playback volume as a double between 0 and 1
+        /// Sets both left and right channels
+        ///</Summary>
         public void Seek (double position)
         {
             if (player != null)
