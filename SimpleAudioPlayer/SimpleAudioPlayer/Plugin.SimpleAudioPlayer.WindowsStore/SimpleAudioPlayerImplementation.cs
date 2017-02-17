@@ -14,10 +14,10 @@ namespace Plugin.SimpleAudioPlayer
         MediaElement player;
 
         public double Duration
-        { get { return player == null ? 0 : player.Position.TotalSeconds; } }
+        { get { return player == null ? 0 : player.NaturalDuration.TimeSpan.TotalSeconds; } }
 
         public double CurrentPosition
-        { get { return player == null ? 0 : player.NaturalDuration.TimeSpan.TotalSeconds; } }
+        { get { return player == null ? 0 : player.Position.TotalSeconds; } }
 
         public double Volume
         {

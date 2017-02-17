@@ -15,10 +15,10 @@ namespace Plugin.SimpleAudioPlayer
         static int index = 0;
 
         public double Duration
-        { get { return player == null ? 0 : player.Duration; } }
+        { get { return player == null ? 0 : ((double)player.Duration)/1000.0; } }
 
         public double CurrentPosition
-        { get { return player == null ? 0 : player.CurrentPosition; } }
+        { get { return player == null ? 0 : ((double)player.CurrentPosition)/1000.0; } }
 
         public double Volume
         {
@@ -64,6 +64,8 @@ namespace Plugin.SimpleAudioPlayer
         public void Stop()
         {
             player?.Stop();
+            player?.Prepare();
+            player?.SeekTo(0);
         }
 
         public void Pause()
