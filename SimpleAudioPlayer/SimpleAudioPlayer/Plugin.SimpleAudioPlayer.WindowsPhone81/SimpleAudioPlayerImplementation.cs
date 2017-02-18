@@ -1,6 +1,8 @@
 using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
+using Windows.ApplicationModel;
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -58,9 +60,15 @@ namespace Plugin.SimpleAudioPlayer
             if (player == null)
                 player = new MediaElement() { AutoPlay = false };
 
-            player.Source = new Uri("ms-appx:///Assets/" + fileName);
+            //a bit ugly but Windows 8x support in Forms will probably go away
+            var folder = Package.Current.InstalledLocation.GetFolderAsync("Assets").AsTask().Result;
+            var file = folder.GetFileAsync(fileName).AsTask().Result;
 
-            return (player == null || player.Source == null) ? false : true;
+            var stream = file.OpenAsync(FileAccessMode.Read).AsTask().Result;
+
+            player.SetSource(stream, "");
+
+            return (player == null) ? false : true;
         }
 
         public void Play()

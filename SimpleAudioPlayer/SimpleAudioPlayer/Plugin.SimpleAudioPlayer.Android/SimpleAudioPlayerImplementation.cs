@@ -3,7 +3,6 @@ using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
 
-
 namespace Plugin.SimpleAudioPlayer
 {
     /// <summary>
@@ -93,8 +92,7 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Stop()
         {
-            player?.Stop();
-            player?.Prepare();
+            player?.Pause();
             player?.SeekTo(0);
         }
 
@@ -113,7 +111,7 @@ namespace Plugin.SimpleAudioPlayer
         public void Seek (double position)
         {
             if (player != null)
-                player.SeekTo((int)position);
+                player.SeekTo((int)position*1000);
         }
 
         void SetVolume(double volume)

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAPlayerSample.PCLAudioPage"
+             Title="Shared Audio">
+
+  <StackLayout Orientation="Vertical" Spacing="5" Margin="10">
+    <Label Text="Postion:" />
+    <Slider x:Name="sliderPosition" />
+    <Label x:Name="lblPosition" />
+
+    <Button x:Name="btnPlay" Text="Play" BorderColor="Green" />
+    <Button x:Name="btnPause" Text="Pause" BorderColor="Blue" />
+    <Button x:Name="btnStop" Text="Stop" BorderColor="Red" />
+
+    <Label Text="Volume:" />
+    <Slider x:Name="sliderVolume" Minimum="0" Maximum="1"/>
+  </StackLayout>
+
+</ContentPage>
