@@ -13,18 +13,40 @@ namespace Plugin.SimpleAudioPlayer
   {
         MediaPlayer player;
 
+        ///<Summary>
+        /// Length of audio in seconds
+        ///</Summary>
         public double Duration
         { get { return player == null ? 0 : player.PlaybackSession.NaturalDuration.TotalSeconds; } }
 
+        ///<Summary>
+        /// Current position of audio in seconds
+        ///</Summary>
         public double CurrentPosition
         { get { return player == null ? 0 : player.PlaybackSession.Position.TotalSeconds; } }
 
+        ///<Summary>
+        /// Playback volume (0 to 1)
+        ///</Summary>
         public double Volume
         {
             get { return player == null ? 0 : player.Volume; }
-            set { SetVolume(value); }
+            set { SetVolume(value, Balance); }
         }
 
+        ///<Summary>
+        /// Balance left/right: -1 is 100% left : 0% right, 1 is 100% right : 0% left, 0 is equal volume left/right
+        ///</Summary>
+        public double Balance
+        {
+            get { return _balance; }
+            set { SetVolume(Volume, _balance = value); }
+        }
+        double _balance = 0;
+
+        ///<Summary>
+        /// Indicates if the currently loaded audio file is playing
+        ///</Summary>
         public bool IsPlaying
         {
             get
@@ -35,6 +57,9 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        ///<Summary>
+        /// Indicates if the position of the loaded audio file can be updated
+        ///</Summary>
         public bool CanSeek
         { get { return player == null ? false : player.PlaybackSession.CanSeek; } }
 
@@ -118,10 +143,16 @@ namespace Plugin.SimpleAudioPlayer
                 player.PlaybackSession.Position = TimeSpan.FromSeconds(position);
         }
 
-        public void SetVolume(double volume)
+        void SetVolume(double volume, double balance)
         {
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
+
+            balance = Math.Max(0, balance);
+            balance = Math.Min(1, balance);
+
+            var right = (balance < 0) ? volume * -1 * balance : volume;
+            var left = (balance > 0) ? volume * 1 * balance : volume;
 
             player.Volume = volume;
         }

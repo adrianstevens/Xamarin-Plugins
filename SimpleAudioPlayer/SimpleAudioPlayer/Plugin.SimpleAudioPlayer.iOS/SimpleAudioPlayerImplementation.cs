@@ -31,8 +31,18 @@ namespace Plugin.SimpleAudioPlayer
         public double Volume
         {
             get { return player == null ? 0 : player.Volume; }
-            set { SetVolume(value); }
+            set { SetVolume(value, Balance); }
         }
+
+        ///<Summary>
+        /// Balance left/right: -1 is 100% left : 0% right, 1 is 100% right : 0% left, 0 is equal volume left/right
+        ///</Summary>
+        public double Balance
+        {
+            get { return _balance; }
+            set { SetVolume(Volume, _balance = value); }
+        }
+        double _balance = 0;
 
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
@@ -41,7 +51,7 @@ namespace Plugin.SimpleAudioPlayer
         { get { return player == null ? false : player.Playing; } }
 
         ///<Summary>
-        /// Indicates if the currently loaded audio file can be seeked - always returns true on iOS
+        /// Indicates if the position of the loaded audio file can be updated - always returns true on iOS
         ///</Summary>
         public bool CanSeek
         { get { return player == null ? false : true; } }
@@ -113,7 +123,7 @@ namespace Plugin.SimpleAudioPlayer
             player.CurrentTime = position;
         }
 
-        public void SetVolume(double volume)
+        public void SetVolume(double volume, double balance)
         {
             if (player == null)
                 return;
@@ -121,7 +131,13 @@ namespace Plugin.SimpleAudioPlayer
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 
-            player.SetVolume((float)volume, (float)volume);
+            balance = Math.Max(0, balance);
+            balance = Math.Min(1, balance);
+
+            var right = (balance < 0) ? volume * -1 * balance : volume;
+            var left = (balance > 0) ? volume * 1 * balance : volume;
+
+            player.SetVolume((float)left, (float)right);
         }
     }
 }

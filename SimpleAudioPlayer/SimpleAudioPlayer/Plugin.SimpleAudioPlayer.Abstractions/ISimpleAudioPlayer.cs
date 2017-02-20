@@ -12,6 +12,8 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
         double CurrentPosition { get; }
         double Volume { get; set; }
 
+        double Balance { get; set; }
+
         bool IsPlaying { get; }
 
         bool CanSeek { get; }
