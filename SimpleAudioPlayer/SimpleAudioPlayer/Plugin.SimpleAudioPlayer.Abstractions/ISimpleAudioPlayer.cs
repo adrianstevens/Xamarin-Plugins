@@ -6,7 +6,7 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
   /// <summary>
   /// Interface for SimpleAudioPlayer
   /// </summary>
-  public interface ISimpleAudioPlayer
+  public interface ISimpleAudioPlayer : IDisposable
   {
         double Duration { get; }
         double CurrentPosition { get; }

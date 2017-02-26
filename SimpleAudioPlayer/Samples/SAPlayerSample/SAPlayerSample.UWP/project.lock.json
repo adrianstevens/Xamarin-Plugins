@@ -1788,7 +1788,7 @@
           }
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -3452,7 +3452,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -5080,7 +5080,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -6750,7 +6750,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -8378,7 +8378,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -10048,7 +10048,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -11676,7 +11676,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
+      "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
         "compile": {
           "lib/UAP10/Plugin.SimpleAudioPlayer.Abstractions.dll": {},
           "lib/UAP10/Plugin.SimpleAudioPlayer.dll": {}
@@ -14839,11 +14839,11 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "Xam.Plugin.SimpleAudioPlayer/0.3.0-alpha": {
-      "sha512": "dEi+wzU3zgJ3P6NsCCzkKj8xg6Q4mQ284LZF85nECE2usihuN+fE+xPvdwa+xQMM4ePIVWjJ5ccNGC1t/t418w==",
+    "Xam.Plugin.SimpleAudioPlayer/0.4.1-beta": {
+      "sha512": "iRbLRYfp5dpCFZXQzVCJnWXsHNmCpwKs+ztzgAEtjWXNllQsXIxWSbQQdA08aHJFu2aS76hEFC8aRd4zqXfxUA==",
       "type": "package",
       "files": [
-        "Xam.Plugin.SimpleAudioPlayer.0.3.0-alpha.nupkg.sha512",
+        "Xam.Plugin.SimpleAudioPlayer.0.4.1-beta.nupkg.sha512",
         "Xam.Plugin.SimpleAudioPlayer.nuspec",
         "lib/MonoAndroid10/Plugin.SimpleAudioPlayer.Abstractions.dll",
         "lib/MonoAndroid10/Plugin.SimpleAudioPlayer.Abstractions.pdb",
@@ -15053,7 +15053,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "Xam.Plugin.SimpleAudioPlayer >= 0.3.0-alpha",
+      "Xam.Plugin.SimpleAudioPlayer >= 0.4.1-beta",
       "Xamarin.Forms >= 2.3.3.180"
     ],
     "UAP,Version=v10.0": []

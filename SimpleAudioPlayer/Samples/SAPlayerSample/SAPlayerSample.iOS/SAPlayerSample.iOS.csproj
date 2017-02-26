@@ -116,12 +116,12 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.3.0-alpha\lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.dll</HintPath>
+    <Reference Include="Plugin.SimpleAudioPlayer">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.4.1-beta\lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.3.0-alpha\lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.4.1-beta\lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

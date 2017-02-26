@@ -58,13 +58,15 @@ namespace Plugin.SimpleAudioPlayer
         public bool CanSeek
         { get { return player == null ? false : true; } }
 
+        string path;
+
         ///<Summary>
         /// Load wave or mp3 audio file as a stream
         ///</Summary>
         public bool Load(Stream audioStream)
         {
             //cache to the file system
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
+            path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
             var fileStream = File.Create(path);
             audioStream.CopyTo(fileStream);
             fileStream.Close();
@@ -151,6 +153,40 @@ namespace Plugin.SimpleAudioPlayer
             var left = (balance > 0) ? volume * 1 * balance : volume;
 
             player.SetVolume((float)left, (float)right);
+        }
+
+        bool isDisposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (isDisposed)
+                return;
+
+            if (disposing)
+            {
+            }
+
+            player.Dispose();
+            player = null;
+
+            if (string.IsNullOrWhiteSpace(path) == false)
+            {
+                File.Delete(path);
+                path = string.Empty;
+            }
+
+            isDisposed = true;
+        }
+
+        ~SimpleAudioPlayerImplementation()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
         }
     }
 }

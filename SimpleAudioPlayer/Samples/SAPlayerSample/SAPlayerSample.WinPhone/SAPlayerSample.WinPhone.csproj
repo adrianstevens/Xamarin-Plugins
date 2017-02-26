@@ -121,11 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.3.0-alpha\lib\wpa81\Plugin.SimpleAudioPlayer.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.4.1-beta\lib\wpa81\Plugin.SimpleAudioPlayer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.3.0-alpha\lib\wpa81\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.4.1-beta\lib\wpa81\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

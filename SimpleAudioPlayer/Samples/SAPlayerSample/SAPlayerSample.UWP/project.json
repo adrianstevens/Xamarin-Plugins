@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "Xam.Plugin.SimpleAudioPlayer": "0.3.0-alpha",
+    "Xam.Plugin.SimpleAudioPlayer": "0.4.1-beta",
     "Xamarin.Forms": "2.3.3.180"
   },
   "frameworks": {
