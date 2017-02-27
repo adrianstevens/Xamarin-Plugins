@@ -165,13 +165,26 @@ namespace Plugin.SimpleAudioPlayer
             {
             }
 
+            if (player.IsPlaying)
+                player.Stop();
+
+            player.Release();
+            player.Reset();
+
             player.Dispose();
             player = null;
 
             if (string.IsNullOrWhiteSpace(path) == false)
             {
-                File.Delete(path);
-                path = string.Empty;
+                try
+                {
+                    File.Delete(path);
+                    path = string.Empty;
+                }
+                catch
+                {
+
+                }
             }
 
             isDisposed = true;

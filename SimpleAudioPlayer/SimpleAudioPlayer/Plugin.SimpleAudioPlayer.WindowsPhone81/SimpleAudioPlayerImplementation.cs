@@ -144,32 +144,9 @@ namespace Plugin.SimpleAudioPlayer
 
             player.Volume = volume;
         }
-
-        bool isDisposed = false;
-        protected virtual void Dispose(bool disposing)
+        
+        public void Dispose ()
         {
-            if (isDisposed)
-                return;
-
-            if (disposing)
-            {
-            }
-
-            player = null;
-
-            isDisposed = true;
-        }
-
-        ~SimpleAudioPlayerImplementation()
-        {
-            Dispose(false);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-
-            GC.SuppressFinalize(this);
         }
     }
 }
