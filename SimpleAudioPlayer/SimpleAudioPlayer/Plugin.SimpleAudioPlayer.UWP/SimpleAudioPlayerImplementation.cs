@@ -71,8 +71,6 @@ namespace Plugin.SimpleAudioPlayer
             player?.Dispose();
             player = new MediaPlayer() { AutoPlay = false };
 
-            //player.SetStreamSource(audioStream.AsRandomAccessStream());
-
             player.Source = MediaSource.CreateFromStream(audioStream.AsRandomAccessStream(), string.Empty);
 
             return (player == null || player.Source == null) ? false : true;
@@ -145,6 +143,9 @@ namespace Plugin.SimpleAudioPlayer
 
         void SetVolume(double volume, double balance)
         {
+            if (player == null || isDisposed)
+                return;
+
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 
@@ -160,14 +161,16 @@ namespace Plugin.SimpleAudioPlayer
         bool isDisposed = false;
         protected virtual void Dispose(bool disposing)
         {
-            if (isDisposed)
+            if (isDisposed || player == null)
                 return;
 
             if (disposing)
             {
-            }
+                if (IsPlaying)
+                    Stop();
 
-            player.Dispose();
+                player.Dispose();
+            }
             player = null;
 
             isDisposed = true;

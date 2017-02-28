@@ -148,10 +148,9 @@ namespace Plugin.SimpleAudioPlayer
 
             if (disposing)
             {
+                player.Dispose();
+                player = null;
             }
-
-            player.Dispose();
-            player = null;
 
             isDisposed = true;
         }

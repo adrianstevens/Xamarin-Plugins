@@ -61,7 +61,7 @@ namespace Plugin.SimpleAudioPlayer
         string path;
 
         ///<Summary>
-        /// Load wave or mp3 audio file as a stream
+        /// Load wav or mp3 audio file as a stream
         ///</Summary>
         public bool Load(Stream audioStream)
         {
@@ -81,7 +81,7 @@ namespace Plugin.SimpleAudioPlayer
         }
 
         ///<Summary>
-        /// Load wave or mp3 audio file from the iOS Resources folder
+        /// Load wav or mp3 audio file from the iOS Resources folder
         ///</Summary>
         public bool Load(string fileName)
         {
@@ -158,21 +158,19 @@ namespace Plugin.SimpleAudioPlayer
         bool isDisposed = false;
         protected virtual void Dispose(bool disposing)
         {
-            if (isDisposed)
+            if (isDisposed || player == null)
                 return;
 
             if (disposing)
             {
+                if (IsPlaying)
+                    player.Stop();
+
+                player.Dispose();
             }
-
-            if (player.IsPlaying)
-                player.Stop();
-
-            player.Release();
-            player.Reset();
-
-            player.Dispose();
             player = null;
+
+            isDisposed = true;
 
             if (string.IsNullOrWhiteSpace(path) == false)
             {
@@ -183,7 +181,6 @@ namespace Plugin.SimpleAudioPlayer
                 }
                 catch
                 {
-
                 }
             }
 

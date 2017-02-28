@@ -147,6 +147,7 @@ namespace Plugin.SimpleAudioPlayer
 
         public void Dispose()
         {
+            //MediaElement does not require cleanup
         }
     }
 }

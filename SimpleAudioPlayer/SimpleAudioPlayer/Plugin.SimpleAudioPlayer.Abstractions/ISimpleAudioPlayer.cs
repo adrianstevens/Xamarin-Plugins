@@ -8,8 +8,12 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
   /// </summary>
   public interface ISimpleAudioPlayer : IDisposable
   {
+        event EventHandler PlaybackEnded;
+
         double Duration { get; }
+
         double CurrentPosition { get; }
+
         double Volume { get; set; }
 
         double Balance { get; set; }
