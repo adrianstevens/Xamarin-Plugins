@@ -1,7 +1,6 @@
 using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
@@ -14,6 +13,8 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
+        public event EventHandler PlaybackEnded;
+
         MediaElement player;
 
         ///<Summary>
@@ -42,10 +43,10 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Balance
         {
-            get { return _blanance; }
-            set { SetVolume(Volume, _blanance = value); }
+            get { return _balance; }
+            set { SetVolume(Volume, _balance = value); }
         }
-        double _blanance = 0;
+        double _balance = 0;
 
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
@@ -71,7 +72,11 @@ namespace Plugin.SimpleAudioPlayer
             if (player == null)
                 player = new MediaElement() { AutoPlay = false };
 
-            player.SetSource(audioStream.AsRandomAccessStream(), "");
+            if (player != null)
+            {
+                player.SetSource(audioStream.AsRandomAccessStream(), "");
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null) ? false : true;
         }
@@ -90,9 +95,18 @@ namespace Plugin.SimpleAudioPlayer
 
             var stream = file.OpenAsync(FileAccessMode.Read).AsTask().Result;
 
-            player.SetSource(stream, "");
+            if(player != null)
+            {
+                player.SetSource(stream, "");
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null) ? false : true;
+        }
+
+        private void OnPlaybackEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
         }
 
         public void Play()

@@ -13,6 +13,8 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
+        public event EventHandler PlaybackEnded;
+
         MediaElement player;
 
         ///<Summary>
@@ -59,21 +61,25 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
-
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
         public bool CanSeek
         { get { return player == null ? false : player.CanSeek; } }
 
+        ///<Summary>
+        /// Load wave or mp3 audio file as a stream
+        ///</Summary>
         public bool Load(Stream audioStream)
         {
             if (player == null)
-            {
                 player = new MediaElement() { AutoPlay = false };
-            }
 
-            player.SetSource(audioStream.AsRandomAccessStream(), "");
+            if (player != null)
+            {
+                player.SetSource(audioStream.AsRandomAccessStream(), "");
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null) ? false : true;
         }
@@ -92,9 +98,18 @@ namespace Plugin.SimpleAudioPlayer
 
             var stream = file.OpenAsync(FileAccessMode.Read).AsTask().Result;
 
-            player.SetSource(stream, "");
+            if (player != null)
+            {
+                player.SetSource(stream, "");
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null) ? false : true;
+        }
+
+        private void OnPlaybackEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
         }
 
         public void Play()
@@ -105,6 +120,7 @@ namespace Plugin.SimpleAudioPlayer
             if (player.CurrentState == MediaElementState.Playing)
             {
                 player.Stop();
+                player.Play();
             }
             else
             {
@@ -144,9 +160,10 @@ namespace Plugin.SimpleAudioPlayer
 
             player.Volume = volume;
         }
-        
-        public void Dispose ()
+
+        public void Dispose()
         {
+            //MediaElement does not require cleanup
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
+        public event EventHandler PlaybackEnded;
+
         MediaPlayer player;
 
         ///<Summary>
@@ -71,9 +73,18 @@ namespace Plugin.SimpleAudioPlayer
             player?.Dispose();
             player = new MediaPlayer() { AutoPlay = false };
 
-            player.Source = MediaSource.CreateFromStream(audioStream.AsRandomAccessStream(), string.Empty);
+            if (player != null)
+            {
+                player.Source = MediaSource.CreateFromStream(audioStream.AsRandomAccessStream(), string.Empty);
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null || player.Source == null) ? false : true;
+        }
+
+        private void OnPlaybackEnded(MediaPlayer sender, object args)
+        {
+            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
         }
 
         ///<Summary>
@@ -84,8 +95,12 @@ namespace Plugin.SimpleAudioPlayer
             player?.Dispose();
             player = new MediaPlayer() { AutoPlay = false };
 
-            player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/" + fileName));
- 
+            if(player != null)
+            {
+                player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/" + fileName));
+                player.MediaEnded += OnPlaybackEnded;
+            }
+
             return (player == null || player.Source == null) ? false : true;
         }
 

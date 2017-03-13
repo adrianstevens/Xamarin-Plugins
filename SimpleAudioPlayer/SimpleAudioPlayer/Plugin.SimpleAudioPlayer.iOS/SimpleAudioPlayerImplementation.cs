@@ -11,6 +11,8 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
+        public event EventHandler PlaybackEnded;
+
         AVAudioPlayer player;
 
         ///<Summary>
@@ -68,6 +70,9 @@ namespace Plugin.SimpleAudioPlayer
 
             player = AVAudioPlayer.FromData(data);
 
+            if (player != null)
+                player.FinishedPlaying += OnPlaybackEnded;
+
             return (player == null) ? false : true;
         }
 
@@ -79,7 +84,15 @@ namespace Plugin.SimpleAudioPlayer
             player?.Dispose();
             player = AVAudioPlayer.FromUrl(NSUrl.FromFilename(fileName));
 
+            if(player != null)
+                player.FinishedPlaying += OnPlaybackEnded;
+
             return (player == null) ? false : true;
+        }
+
+        private void OnPlaybackEnded(object sender, AVStatusEventArgs e)
+        {
+            PlaybackEnded?.Invoke(sender, e);
         }
 
         ///<Summary>
@@ -139,6 +152,10 @@ namespace Plugin.SimpleAudioPlayer
 
             player.SetVolume((float)left, (float)right);
         }
+        void OnPlaybackEnded()
+        {
+            PlaybackEnded?.Invoke(this, EventArgs.Empty);
+        }
 
         bool isDisposed = false;
         protected virtual void Dispose(bool disposing)
@@ -148,6 +165,8 @@ namespace Plugin.SimpleAudioPlayer
 
             if (disposing)
             {
+                player.Stop();
+                player.FinishedPlaying -= OnPlaybackEnded;   
                 player.Dispose();
                 player = null;
             }

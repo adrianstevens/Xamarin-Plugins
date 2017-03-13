@@ -10,6 +10,8 @@ namespace Plugin.SimpleAudioPlayer
     /// </summary>
     public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
     {
+        public event EventHandler PlaybackEnded;
+
         Android.Media.MediaPlayer player;
 
         static int index = 0;
@@ -77,6 +79,9 @@ namespace Plugin.SimpleAudioPlayer
             player?.SetDataSource(path);
             player?.Prepare();
 
+            if(player != null)
+                player.Completion += OnPlaybackEnded;
+
             return (player == null) ? false : true;
         }
 
@@ -93,6 +98,9 @@ namespace Plugin.SimpleAudioPlayer
             player?.SetDataSource(afd.FileDescriptor, afd.StartOffset, afd.Length);
             
             player?.Prepare();
+
+            if (player != null)
+                player.Completion += OnPlaybackEnded;
 
             return (player == null) ? false : true;
         }
@@ -155,7 +163,13 @@ namespace Plugin.SimpleAudioPlayer
             player.SetVolume((float)left, (float)right);
         }
 
+        void OnPlaybackEnded(object sender, EventArgs e)
+        {
+            PlaybackEnded?.Invoke(sender, e);
+        }
+
         bool isDisposed = false;
+
         protected virtual void Dispose(bool disposing)
         {
             if (isDisposed || player == null)
@@ -165,6 +179,8 @@ namespace Plugin.SimpleAudioPlayer
             {
                 if (IsPlaying)
                     player.Stop();
+
+                player.Completion -= OnPlaybackEnded;
 
                 player.Dispose();
             }

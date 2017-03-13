@@ -13,6 +13,8 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
+        public event EventHandler PlaybackEnded;
+
         MediaElement player;
 
         ///<Summary>
@@ -53,7 +55,7 @@ namespace Plugin.SimpleAudioPlayer
         {
             get
             {
-                if (player == null )
+                if (player == null)
                     return false;
                 return player.CurrentState == MediaElementState.Playing; //might need to expand
             }
@@ -70,10 +72,14 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(Stream audioStream)
         {
-            if(player == null)
+            if (player == null)
                 player = new MediaElement() { AutoPlay = false };
 
-            player.SetSource(audioStream);
+            if (player != null)
+            {
+                player.SetSource(audioStream);
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null) ? false : true;
         }
@@ -92,9 +98,18 @@ namespace Plugin.SimpleAudioPlayer
 
             var stream = file.OpenAsync(FileAccessMode.Read).AsTask().Result;
 
-            player.SetSource(stream.AsStream());
+            if (player != null)
+            {
+                player.SetSource(stream.AsStream());
+                player.MediaEnded += OnPlaybackEnded;
+            }
 
             return (player == null) ? false : true;
+        }
+
+        private void OnPlaybackEnded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
         }
 
         public void Play()
@@ -105,6 +120,7 @@ namespace Plugin.SimpleAudioPlayer
             if (player.CurrentState == MediaElementState.Playing)
             {
                 player.Stop();
+                player.Play();
             }
             else
             {
@@ -125,7 +141,7 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
-        public void Seek (double position)
+        public void Seek(double position)
         {
             if (player != null && player.CanSeek)
                 player.Position = TimeSpan.FromSeconds(position);
