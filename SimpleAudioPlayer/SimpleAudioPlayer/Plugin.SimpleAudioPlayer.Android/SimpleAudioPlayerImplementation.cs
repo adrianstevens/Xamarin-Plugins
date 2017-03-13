@@ -10,6 +10,9 @@ namespace Plugin.SimpleAudioPlayer
     /// </summary>
     public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
     {
+        ///<Summary>
+        /// Raised when audio playback completes successfully 
+        ///</Summary>
         public event EventHandler PlaybackEnded;
 
         Android.Media.MediaPlayer player;
@@ -23,7 +26,7 @@ namespace Plugin.SimpleAudioPlayer
         { get { return player == null ? 0 : ((double)player.Duration) / 1000.0; } }
 
         ///<Summary>
-        /// Current position of audio in seconds
+        /// Current position of audio playback in seconds
         ///</Summary>
         public double CurrentPosition
         { get { return player == null ? 0 : ((double)player.CurrentPosition) / 1000.0; } }
@@ -140,8 +143,7 @@ namespace Plugin.SimpleAudioPlayer
         }
 
         ///<Summary>
-        /// Sets the playback volume as a double between 0 and 1
-        /// Sets both left and right channels
+        /// Set the current playback position (in seconds)
         ///</Summary>
         public void Seek (double position)
         {
@@ -149,6 +151,10 @@ namespace Plugin.SimpleAudioPlayer
                 player.SeekTo((int)position*1000);
         }
 
+        ///<Summary>
+        /// Sets the playback volume as a double between 0 and 1
+        /// Sets both left and right channels
+        ///</Summary>
         void SetVolume(double volume, double balance)
         {
             volume = Math.Max(0, volume);
