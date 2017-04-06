@@ -57,6 +57,13 @@ namespace Plugin.SimpleAudioPlayer
         public bool IsPlaying
         { get { return player == null ? false : player.IsPlaying; } }
 
+        public bool Loop
+        {
+            get { return _loop; }
+            set { _loop = value;  if (player != null) player.Looping = _loop; }
+        }
+        bool _loop;
+
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
@@ -78,7 +85,7 @@ namespace Plugin.SimpleAudioPlayer
 
             //load the cached audio into MediaPlayer
             player?.Dispose();
-            player = new Android.Media.MediaPlayer();
+            player = new Android.Media.MediaPlayer() { Looping = Loop };
             player?.SetDataSource(path);
             player?.Prepare();
 
@@ -96,7 +103,7 @@ namespace Plugin.SimpleAudioPlayer
             AssetFileDescriptor afd = Android.App.Application.Context.Assets.OpenFd(fileName);
 
             player?.Dispose();
-            player = new Android.Media.MediaPlayer();
+            player = new Android.Media.MediaPlayer() { Looping = Loop };
 
             player?.SetDataSource(afd.FileDescriptor, afd.StartOffset, afd.Length);
             

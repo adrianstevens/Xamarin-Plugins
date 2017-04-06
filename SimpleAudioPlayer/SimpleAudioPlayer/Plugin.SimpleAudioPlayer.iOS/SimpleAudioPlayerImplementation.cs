@@ -52,6 +52,18 @@ namespace Plugin.SimpleAudioPlayer
         public bool IsPlaying
         { get { return player == null ? false : player.Playing; } }
 
+        public bool Loop
+        {
+            get { return _loop; }
+            set
+            {
+                _loop = value;
+                if (player != null)
+                    player.NumberOfLoops = _loop ? -1 : 1;
+            }
+        }
+        bool _loop;
+
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated - always returns true on iOS
         ///</Summary>

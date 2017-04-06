@@ -61,6 +61,13 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        public bool Loop
+        {
+            get { return _loop; }
+            set { _loop = value; }
+        }
+        bool _loop;
+
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
@@ -110,6 +117,12 @@ namespace Plugin.SimpleAudioPlayer
         private void OnPlaybackEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             PlaybackEnded?.Invoke(sender, EventArgs.Empty);
+
+            if (Loop)
+            {
+                player.Position = TimeSpan.Zero;
+                player.Play();
+            }
         }
 
         public void Play()

@@ -38,6 +38,8 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
         ///</Summary>
         bool IsPlaying { get; }
 
+        bool Loop { get; set; }
+
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>

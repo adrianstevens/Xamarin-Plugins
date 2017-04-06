@@ -59,6 +59,18 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        public bool Loop
+        {
+            get { return _loop; }
+            set
+            {
+                _loop = value;
+                if (player != null)
+                    player.IsLoopingEnabled = _loop;
+            }
+        }
+        bool _loop;
+
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
@@ -71,7 +83,7 @@ namespace Plugin.SimpleAudioPlayer
         public bool Load(Stream audioStream)
         {
             player?.Dispose();
-            player = new MediaPlayer() { AutoPlay = false };
+            player = GetPlayer();
 
             if (player != null)
             {
@@ -93,9 +105,9 @@ namespace Plugin.SimpleAudioPlayer
         public bool Load(string fileName)
         {
             player?.Dispose();
-            player = new MediaPlayer() { AutoPlay = false };
+            player = GetPlayer();
 
-            if(player != null)
+            if (player != null)
             {
                 player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/" + fileName));
                 player.MediaEnded += OnPlaybackEnded;
@@ -171,6 +183,11 @@ namespace Plugin.SimpleAudioPlayer
             var left = (balance > 0) ? volume * 1 * balance : volume;
 
             player.Volume = volume;
+        }
+
+        MediaPlayer GetPlayer ()
+        {
+            return new MediaPlayer() { AutoPlay = false, IsLoopingEnabled = _loop };
         }
 
         bool isDisposed = false;
