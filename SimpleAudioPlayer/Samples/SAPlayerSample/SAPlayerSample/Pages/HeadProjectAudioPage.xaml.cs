@@ -16,6 +16,12 @@ namespace SAPlayerSample
 
 
             btnPlay.Clicked += BtnPlayClicked;
+            switchLoop.Toggled += SwitchLoopToggled;
+        }
+
+        private void SwitchLoopToggled(object sender, ToggledEventArgs e)
+        {
+            Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current.Loop = switchLoop.IsToggled;
         }
 
         private void BtnPlayClicked(object sender, EventArgs e)

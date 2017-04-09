@@ -82,7 +82,12 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(Stream audioStream)
         {
-            player?.Dispose();
+            if(player != null)
+            {
+                player.MediaEnded -= OnPlaybackEnded;
+                player?.Dispose();
+            }
+
             player = GetPlayer();
 
             if (player != null)
@@ -219,6 +224,5 @@ namespace Plugin.SimpleAudioPlayer
 
             GC.SuppressFinalize(this);
         }
-
     }
 }
