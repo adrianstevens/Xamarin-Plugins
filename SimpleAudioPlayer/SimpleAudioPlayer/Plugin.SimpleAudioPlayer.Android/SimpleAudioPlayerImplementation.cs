@@ -195,6 +195,8 @@ namespace Plugin.SimpleAudioPlayer
 
                 player.Completion -= OnPlaybackEnded;
 
+                player.Release();
+
                 player.Dispose();
             }
             player = null;
