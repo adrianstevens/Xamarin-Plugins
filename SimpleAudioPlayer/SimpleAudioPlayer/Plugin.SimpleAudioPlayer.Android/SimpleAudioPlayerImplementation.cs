@@ -87,6 +87,7 @@ namespace Plugin.SimpleAudioPlayer
             var context = Android.App.Application.Context;
 
             //load the cached audio into MediaPlayer
+            player?.Release();
             player?.Dispose();
             player = new Android.Media.MediaPlayer() { Looping = Loop };
 
