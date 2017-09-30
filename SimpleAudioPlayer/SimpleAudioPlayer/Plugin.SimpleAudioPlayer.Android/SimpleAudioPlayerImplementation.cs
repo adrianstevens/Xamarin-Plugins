@@ -2,6 +2,7 @@ using Android.Content.Res;
 using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
+using Uri = Android.Net.Uri;
 
 namespace Plugin.SimpleAudioPlayer
 {
@@ -83,13 +84,31 @@ namespace Plugin.SimpleAudioPlayer
             audioStream.CopyTo(fileStream);
             fileStream.Close();
 
+            var context = Android.App.Application.Context;
+
             //load the cached audio into MediaPlayer
             player?.Dispose();
             player = new Android.Media.MediaPlayer() { Looping = Loop };
-            player?.SetDataSource(path);
+
+            try
+            {
+                player.SetDataSource(path);
+            }
+            catch
+            {
+                try
+                {
+                    player?.SetDataSource(context, Uri.Parse(Uri.Encode(path)));
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
             player?.Prepare();
 
-            if(player != null)
+            if (player != null)
                 player.Completion += OnPlaybackEnded;
 
             return (player == null) ? false : true;
@@ -179,6 +198,10 @@ namespace Plugin.SimpleAudioPlayer
         void OnPlaybackEnded(object sender, EventArgs e)
         {
             PlaybackEnded?.Invoke(sender, e);
+
+            player.SeekTo(0);
+            player.Stop();
+            player.Prepare();
         }
 
         bool isDisposed = false;
