@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xam.Plugin.SimpleAudioPlayer</id>
-		<version>0.8.1-beta</version>
+		<version>0.8.2-beta</version>
 		<title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
@@ -19,7 +19,7 @@
          A light-weight and easy to use cross-platform audio player for Windows, Xamarin and Xamarin.Forms. Load wav and mp3 files from any location including a shared library. Works well for sound effects or application music. Multiple instances can be instantiated to play multiple sources simultaniously.
 		</description>
 		<summary>Cross-platform audio player for Xamarin and Windows</summary>
-		<tags>audio, wav, wave, mp3, xamarin, pcl, portable, shared, xam.pcl, plugin, plugin for xamarin, windows, windows phone, winphone, wp8, winrt, win81, uwp, uap, xamarin.android, android, xamarin.forms, xamarin.ios, ios</tags>
+		<tags>audio, wav, wave, mp3, xamarin, pcl, portable, shared, xam.pcl, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, xamarin.ios, ios</tags>
 		<dependencies>
 		</dependencies>
 	</metadata>
