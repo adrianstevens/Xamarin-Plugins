@@ -7,7 +7,7 @@
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>Plugin.SimpleAudioPlayer.macOS</RootNamespace>
-    <AssemblyName>Plugin.SimpleAudioPlayer.macOS</AssemblyName>
+    <AssemblyName>Plugin.SimpleAudioPlayer</AssemblyName>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <UseXamMacFullFramework>true</UseXamMacFullFramework>
   </PropertyGroup>
@@ -19,6 +19,7 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Plugin.SimpleAudioPlayer.xml</DocumentationFile>
     <EnableCodeSigning>false</EnableCodeSigning>
     <CreatePackage>false</CreatePackage>
     <EnablePackageSigning>false</EnablePackageSigning>
@@ -34,6 +35,7 @@
     <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Plugin.SimpleAudioPlayer.xml</DocumentationFile>
     <EnableCodeSigning>false</EnableCodeSigning>
     <CreatePackage>false</CreatePackage>
     <EnablePackageSigning>false</EnablePackageSigning>

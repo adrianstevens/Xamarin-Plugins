@@ -48,12 +48,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.4.0.282\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -62,6 +56,12 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.4.0.282\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.9-alpha\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.SimpleAudioPlayer">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.9-alpha\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
