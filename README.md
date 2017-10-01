@@ -4,6 +4,10 @@ Cross-platform Plugins for Xamarin and Xamarin.Forms
 ## SimpleAudioPlayer
 SimpleAudioPlayer plays audio data as a stream. This allows you to store audio data in a portable class library and play it on all supported platforms.
 
+### Supported Platforms
+v0.9.0 supports Xamarin.iOS, Xamarin.Android and UWP
+v0.9.9 adds Xamarin.Mac support
+
 ### Public Properties
 
 **Duration**: length of audio in seconds
