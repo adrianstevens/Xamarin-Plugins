@@ -13,7 +13,7 @@ SimpleAudioPlayer plays local files and audio data as a stream. This allows you 
 |Xamarin.Android|API 10+|
 |Windows 10 UWP|10+|
 |Xamarin.Mac|All|
-|tvOS|All|
+|Xamarin.tvOS|All|
 
 ### API Usage
 
