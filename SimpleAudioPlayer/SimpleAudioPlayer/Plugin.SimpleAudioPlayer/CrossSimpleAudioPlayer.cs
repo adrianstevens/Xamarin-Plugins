@@ -28,7 +28,7 @@ namespace Plugin.SimpleAudioPlayer
 
       public static ISimpleAudioPlayer CreateSimpleAudioPlayer()
       {
-#if PORTABLE
+#if NETSTANDARD1_0
           return null;
 #else
           return new SimpleAudioPlayerImplementation();
@@ -37,7 +37,7 @@ namespace Plugin.SimpleAudioPlayer
 
       internal static Exception NotImplementedInReferenceAssembly()
       {
-         return new NotImplementedException("This functionality is not implemented in the portable version of this assembly. You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.");
+         return new NotImplementedException("This functionality is not implemented in the .NET standard version of this assembly. Reference the NuGet package from your platform-specific (head) application project in order to reference the platform-specific implementation.");
       }
    }
 }
