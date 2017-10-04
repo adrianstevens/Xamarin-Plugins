@@ -66,10 +66,12 @@
       <HintPath>..\packages\Xamarin.Forms.2.4.0.282\lib\Xamarin.Mac\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.SimpleAudioPlayer.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.9-alpha\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.9.1-alpha\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Plugin.SimpleAudioPlayer">
-      <HintPath>..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.9-alpha\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.0.9.9.1-alpha\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
