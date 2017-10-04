@@ -21,51 +21,45 @@
 		<summary>Cross-platform audio player for Xamarin and Windows UWP</summary>
 		<tags>audio, wav, wave, mp3, xamarin, pcl, portable, shared, xam.pcl, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
 		<dependencies>
+      <group targetFramework="netstandard1.0">
+        <dependency id="NETStandard.Library" version="1.6.1" />
+      </group>
+      <group targetFramework="MonoAndroid10">
+      </group>
+      <group targetFramework="Xamarin.iOS10">
+      </group>
+      <group targetFramework="Xamarin.Mac20">
+      </group>
+      <group targetFramework="portable-net45+win+wpa81+wp80">
+      </group>
+      <group targetFramework="uap">
+      </group>
+      <group targetFramework="dotnet">
+      </group>
+      <group targetFramework="xamarintvos">
+      </group>
+      <group targetFramework="xamarinwatchos">
+      </group>
 		</dependencies>
 	</metadata>
 	<files>
 		<!--Core-->
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer\bin\Release\Plugin.SimpleAudioPlayer.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer\bin\Release\Plugin.SimpleAudioPlayer.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer\bin\Release\Plugin.SimpleAudioPlayer.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.pdb" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.Abstractions.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.Abstractions.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.SimpleAudioPlayer.Abstractions.pdb" />		
-		
-		<!--Xamarin.Android-->
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Android\bin\Release\Plugin.SimpleAudioPlayer.dll" target="lib\MonoAndroid10\Plugin.SimpleAudioPlayer.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Android\bin\Release\Plugin.SimpleAudioPlayer.xml" target="lib\MonoAndroid10\Plugin.SimpleAudioPlayer.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Android\bin\Release\Plugin.SimpleAudioPlayer.pdb" target="lib\MonoAndroid10\Plugin.SimpleAudioPlayer.pdb" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.dll" target="lib\MonoAndroid10\Plugin.SimpleAudioPlayer.Abstractions.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.xml" target="lib\MonoAndroid10\Plugin.SimpleAudioPlayer.Abstractions.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.pdb" target="lib\MonoAndroid10\Plugin.SimpleAudioPlayer.Abstractions.pdb" />
+    <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer\bin\Release\netstandard1.0\Plugin.SimpleAudioPlayer.*" target="lib\netstandard1.0" />
 
+		<!--Xamarin.Android-->
+    <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Android\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\MonoAndroid10" />
+		
 		<!--Xamarin.iOS-->
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\bin\iPhone\Release\Plugin.SimpleAudioPlayer.dll" target="lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\bin\iPhone\Release\Plugin.SimpleAudioPlayer.xml" target="lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.dll" target="lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.Abstractions.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.xml" target="lib\Xamarin.iOS10\Plugin.SimpleAudioPlayer.Abstractions.xml" />
+		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\bin\iPhone\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarin.iOS10" />
 
 		<!--UWP-->
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.UWP\bin\Release\Plugin.SimpleAudioPlayer.dll" target="lib\UAP10\Plugin.SimpleAudioPlayer.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.UWP\bin\Release\Plugin.SimpleAudioPlayer.xml" target="lib\UAP10\Plugin.SimpleAudioPlayer.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.UWP\bin\Release\Plugin.SimpleAudioPlayer.pdb" target="lib\UAP10\Plugin.SimpleAudioPlayer.pdb" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.dll" target="lib\UAP10\Plugin.SimpleAudioPlayer.Abstractions.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.xml" target="lib\UAP10\Plugin.SimpleAudioPlayer.Abstractions.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.pdb" target="lib\UAP10\Plugin.SimpleAudioPlayer.Abstractions.pdb" />
+		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.UWP\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\UAP10" />
 		
 		<!--Xamarin.Mac-->
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.macOS\bin\Release\Plugin.SimpleAudioPlayer.dll" target="lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.macOS\bin\Release\Plugin.SimpleAudioPlayer.xml" target="lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.xml" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.dll" target="lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.Abstractions.dll" />
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.xml" target="lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.Abstractions.xml" />
+		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.macOS\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarin.Mac20" />
 
-        <!--Xamarin.tvOS-->
-        <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.tvOS\bin\Release\Plugin.SimpleAudioPlayer.dll" target="lib\Xamarintvos\Plugin.SimpleAudioPlayer.dll" />
-        <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.tvOS\bin\Release\Plugin.SimpleAudioPlayer.xml" target="lib\Xamarintvos\Plugin.SimpleAudioPlayer.xml" />
-        <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.dll" target="lib\XamarintvOS\Plugin.SimpleAudioPlayer.Abstractions.dll" />
-        <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\bin\Release\Plugin.SimpleAudioPlayer.Abstractions.xml" target="lib\XamarintvOS\Plugin.SimpleAudioPlayer.Abstractions.xml" />
- 
+    <!--Xamarin.tvOS-->
+    <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.tvOS\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarintvos" />
 
 	</files>
 </package>
