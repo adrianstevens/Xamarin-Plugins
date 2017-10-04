@@ -1,14 +1,25 @@
-# Xamarin-Plugins
-Cross-platform Plugins for Xamarin and Xamarin.Forms
+### SimpleAudioPlayer
+SimpleAudioPlayer plays local files and audio data as a stream. This allows you to store audio data in a portable class library and play it on all supported platforms.
 
-## SimpleAudioPlayer
-SimpleAudioPlayer plays audio data as a stream. This allows you to store audio data in a portable class library and play it on all supported platforms.
+### Setup
+* Available on NuGet: http://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer [![NuGet](https://img.shields.io/nuget/v/Xam.Plugin.SimpleAudioPlayer.svg?label=NuGet)](https://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer/)
+* Install into your PCL project and Client projects.
 
-### Supported Platforms
-v0.9.0 supports Xamarin.iOS, Xamarin.Android and UWP
-v0.9.9 adds Xamarin.Mac support
+**Platform Support**
 
-### Public Properties
+|Platform|Version|
+| ------------------- | :------------------: |
+|Xamarin.iOS|iOS 7+|
+|Xamarin.Android|API 10+|
+|Windows 10 UWP|10+|
+|Xamarin.Mac|All|
+|tvOS|All|
+
+### API Usage
+
+Call **CrossSimpleAudioPlayer.Current** from any project or PCL to gain access to APIs
+
+#### Properties
 
 **Duration**: length of audio in seconds
 
@@ -22,7 +33,7 @@ v0.9.9 adds Xamarin.Mac support
 
 **CanSeek**: can the playback position be updated
 
-### Public Methods
+#### Methods
 
 **Load(Stream audioStream)**: load a compatible (wav, mp3, etc) audio from a stream
 
