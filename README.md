@@ -66,3 +66,13 @@ var player2 = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioP
 
 For more examples see the **Samples** folder or check out
 https://github.com/adrianstevens/Xamarin-Forms/tree/master/DrumPad2
+
+
+#### Contributions
+Contributions are welcome! If you find a bug want a feature added please report it.
+
+If you want to contribute code please file an issue, create a branch, and file a pull request.
+
+#### License 
+MIT License - see LICENSE.txt
+
