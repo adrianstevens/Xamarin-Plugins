@@ -92,7 +92,7 @@ namespace Plugin.SimpleAudioPlayer
 
             if (player != null)
             {
-                player.Source = MediaSource.CreateFromStream(audioStream.AsRandomAccessStream(), string.Empty);
+                player.Source = MediaSource.CreateFromStream(audioStream?.AsRandomAccessStream(), string.Empty);
                 player.MediaEnded += OnPlaybackEnded;
             }
 
@@ -126,7 +126,7 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Play()
         {
-            if (player == null)
+            if (player == null || player.Source == null)
                 return;
 
             if (player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing)

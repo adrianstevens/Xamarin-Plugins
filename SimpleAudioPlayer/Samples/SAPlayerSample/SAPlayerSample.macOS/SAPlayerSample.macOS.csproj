@@ -56,8 +56,11 @@
     </XamMacArch>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.6482.29498, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-alpha\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.dll</HintPath>
+    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.6485.41167, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-beta\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-beta\lib\Xamarin.Mac20\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

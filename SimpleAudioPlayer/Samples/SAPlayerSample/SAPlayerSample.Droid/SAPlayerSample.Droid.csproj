@@ -55,10 +55,10 @@
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-alpha\lib\MonoAndroid10\Plugin.SimpleAudioPlayer.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-beta\lib\MonoAndroid10\Plugin.SimpleAudioPlayer.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-alpha\lib\MonoAndroid10\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-beta\lib\MonoAndroid10\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
