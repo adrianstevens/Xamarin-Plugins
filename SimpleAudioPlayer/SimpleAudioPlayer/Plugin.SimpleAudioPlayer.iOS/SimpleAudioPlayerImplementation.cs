@@ -52,6 +52,9 @@ namespace Plugin.SimpleAudioPlayer
         public bool IsPlaying
         { get { return player == null ? false : player.Playing; } }
 
+        ///<Summary>
+        /// Continously repeats the currently playing sound
+        ///</Summary>
         public bool Loop
         {
             get { return _loop; }
@@ -75,17 +78,13 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(Stream audioStream)
         {
-            var data = NSData.FromStream(audioStream);
+            DeletePlayer();
 
-            Stop();
-            player?.Dispose();
+            var data = NSData.FromStream(audioStream);
 
             player = AVAudioPlayer.FromData(data);
 
-            if (player != null)
-                player.FinishedPlaying += OnPlaybackEnded;
-
-            return (player == null) ? false : true;
+            return PreparePlayer();
         }
 
         ///<Summary>
@@ -93,13 +92,34 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(string fileName)
         {
-            player?.Dispose();
+            DeletePlayer();
+
             player = AVAudioPlayer.FromUrl(NSUrl.FromFilename(fileName));
 
-            if(player != null)
+            return PreparePlayer();
+        }
+
+        bool PreparePlayer()
+        {
+            if (player != null)
+            {
                 player.FinishedPlaying += OnPlaybackEnded;
+                player.PrepareToPlay();
+            }
 
             return (player == null) ? false : true;
+        }
+
+        void DeletePlayer()
+        {
+            Stop();
+
+            if(player != null)
+            {
+                player.FinishedPlaying -= OnPlaybackEnded;
+                player.Dispose();
+                player = null;
+            }
         }
 
         private void OnPlaybackEnded(object sender, AVStatusEventArgs e)
@@ -176,12 +196,7 @@ namespace Plugin.SimpleAudioPlayer
                 return;
 
             if (disposing)
-            {
-                player.Stop();
-                player.FinishedPlaying -= OnPlaybackEnded;   
-                player.Dispose();
-                player = null;
-            }
+                DeletePlayer();
 
             isDisposed = true;
         }

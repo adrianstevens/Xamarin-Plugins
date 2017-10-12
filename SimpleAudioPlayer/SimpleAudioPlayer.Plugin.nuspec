@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xam.Plugin.SimpleAudioPlayer</id>
-		<version>1.0.0-beta</version>
+		<version>1.0.1</version>
 		<title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
-    <releaseNotes>Added macOS support</releaseNotes>
+    <releaseNotes>Added macOS and tvOS support, improved cleanup on all platforms</releaseNotes>
     <copyright>Copyright ©2017 Adrian Stevens</copyright>
     <licenseUrl>
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
@@ -19,7 +19,7 @@
       A light-weight and easy to use cross-platform audio player for Windows UWP, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.tvOS and Xamarin.Forms. Load wav and mp3 files from any location including a shared library. Works well for sound effects or music. Multiple instances can be instantiated to play multiple sources simultaniously.
     </description>
 		<summary>Cross-platform audio player for Xamarin and Windows UWP</summary>
-		<tags>audio, wav, wave, mp3, xamarin, .net, standard, pcl, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
+		<tags>audio, sound, music, wav, wave, mp3, xamarin, .net, standard, pcl, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
 		<dependencies>
       <group targetFramework="netstandard1.0">
         <dependency id="NETStandard.Library" version="1.6.1" />

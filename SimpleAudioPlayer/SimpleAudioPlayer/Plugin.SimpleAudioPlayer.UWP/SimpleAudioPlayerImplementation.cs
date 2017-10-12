@@ -59,6 +59,9 @@ namespace Plugin.SimpleAudioPlayer
             }
         }
 
+        ///<Summary>
+        /// Continously repeats the currently playing sound
+        ///</Summary>
         public bool Loop
         {
             get { return _loop; }
@@ -82,11 +85,7 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(Stream audioStream)
         {
-            if(player != null)
-            {
-                player.MediaEnded -= OnPlaybackEnded;
-                player?.Dispose();
-            }
+            DeletePlayer();
 
             player = GetPlayer();
 
@@ -98,18 +97,14 @@ namespace Plugin.SimpleAudioPlayer
 
             return (player == null || player.Source == null) ? false : true;
         }
-
-        private void OnPlaybackEnded(MediaPlayer sender, object args)
-        {
-            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
-        }
-
+        
         ///<Summary>
         /// Load wave or mp3 audio file from assets folder in the UWP project
         ///</Summary>
         public bool Load(string fileName)
         {
-            player?.Dispose();
+            DeletePlayer();
+
             player = GetPlayer();
 
             if (player != null)
@@ -119,6 +114,23 @@ namespace Plugin.SimpleAudioPlayer
             }
 
             return (player == null || player.Source == null) ? false : true;
+        }
+
+        void DeletePlayer()
+        {
+            Stop();
+
+            if(player != null)
+            {
+                player.MediaEnded -= OnPlaybackEnded;
+                player.Dispose();
+                player = null;
+            }
+        }
+
+        private void OnPlaybackEnded(MediaPlayer sender, object args)
+        {
+            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
         }
 
         ///<Summary>
@@ -202,13 +214,7 @@ namespace Plugin.SimpleAudioPlayer
                 return;
 
             if (disposing)
-            {
-                if (IsPlaying)
-                    Stop();
-
-                player.Dispose();
-            }
-            player = null;
+                DeletePlayer();
 
             isDisposed = true;
         }

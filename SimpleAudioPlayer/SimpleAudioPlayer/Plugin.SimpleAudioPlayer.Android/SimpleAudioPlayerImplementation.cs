@@ -58,6 +58,9 @@ namespace Plugin.SimpleAudioPlayer
         public bool IsPlaying
         { get { return player == null ? false : player.IsPlaying; } }
 
+        ///<Summary>
+        /// Continously repeats the currently playing sound
+        ///</Summary>
         public bool Loop
         {
             get { return _loop; }
@@ -78,17 +81,14 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(Stream audioStream)
         {
+            DeletePlayer();
+
             //cache to the file system
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
             var fileStream = File.Create(path);
             audioStream.CopyTo(fileStream);
             fileStream.Close();
 
-            var context = Android.App.Application.Context;
-
-            //load the cached audio into MediaPlayer
-            player?.Release();
-            player?.Dispose();
             player = new Android.Media.MediaPlayer() { Looping = Loop };
 
             try
@@ -99,6 +99,7 @@ namespace Plugin.SimpleAudioPlayer
             {
                 try
                 {
+                    var context = Android.App.Application.Context;
                     player?.SetDataSource(context, Uri.Parse(Uri.Encode(path)));
                 }
                 catch
@@ -107,6 +108,27 @@ namespace Plugin.SimpleAudioPlayer
                 }
             }
 
+            return PreparePlayer();
+        }
+
+        ///<Summary>
+        /// Load wav or mp3 audio file from the iOS Resources folder
+        ///</Summary>
+        public bool Load(string fileName)
+        {
+            DeletePlayer();
+
+            AssetFileDescriptor afd = Android.App.Application.Context.Assets.OpenFd(fileName);
+
+            player = new Android.Media.MediaPlayer() { Looping = Loop };
+
+            player?.SetDataSource(afd.FileDescriptor, afd.StartOffset, afd.Length);
+
+            return PreparePlayer();
+        }
+
+        bool PreparePlayer()
+        {
             player?.Prepare();
 
             if (player != null)
@@ -115,24 +137,29 @@ namespace Plugin.SimpleAudioPlayer
             return (player == null) ? false : true;
         }
 
-        ///<Summary>
-        /// Load wav or mp3 audio file from the iOS Resources folder
-        ///</Summary>
-        public bool Load(string fileName)
+        void DeletePlayer()
         {
-            AssetFileDescriptor afd = Android.App.Application.Context.Assets.OpenFd(fileName);
-
-            player?.Dispose();
-            player = new Android.Media.MediaPlayer() { Looping = Loop };
-
-            player?.SetDataSource(afd.FileDescriptor, afd.StartOffset, afd.Length);
-            
-            player?.Prepare();
+            Stop();
 
             if (player != null)
-                player.Completion += OnPlaybackEnded;
+            {
+                player.Completion -= OnPlaybackEnded;
+                player.Release();
+                player.Dispose();
+                player = null;
+            }
 
-            return (player == null) ? false : true;
+            if (string.IsNullOrWhiteSpace(path) == false)
+            {
+                try
+                {
+                    File.Delete(path);
+                    path = string.Empty;
+                }
+                catch
+                {
+                }
+            }
         }
 
         ///<Summary>
@@ -213,31 +240,7 @@ namespace Plugin.SimpleAudioPlayer
                 return;
 
             if (disposing)
-            {
-                if (IsPlaying)
-                    player.Stop();
-
-                player.Completion -= OnPlaybackEnded;
-
-                player.Release();
-
-                player.Dispose();
-            }
-            player = null;
-
-            isDisposed = true;
-
-            if (string.IsNullOrWhiteSpace(path) == false)
-            {
-                try
-                {
-                    File.Delete(path);
-                    path = string.Empty;
-                }
-                catch
-                {
-                }
-            }
+                DeletePlayer();
 
             isDisposed = true;
         }

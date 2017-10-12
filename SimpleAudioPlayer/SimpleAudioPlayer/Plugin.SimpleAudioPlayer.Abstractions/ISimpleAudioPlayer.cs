@@ -38,6 +38,9 @@ namespace Plugin.SimpleAudioPlayer.Abstractions
         ///</Summary>
         bool IsPlaying { get; }
 
+        ///<Summary>
+        /// Continously repeats the currently playing sound
+        ///</Summary>
         bool Loop { get; set; }
 
         ///<Summary>
