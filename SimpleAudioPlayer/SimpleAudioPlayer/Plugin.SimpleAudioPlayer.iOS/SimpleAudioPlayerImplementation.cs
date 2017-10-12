@@ -11,7 +11,10 @@ namespace Plugin.SimpleAudioPlayer
   /// </summary>
   public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
   {
-        public event EventHandler PlaybackEnded;
+		///<Summary>
+		/// Raised when playback completes or loops
+		///</Summary>
+		public event EventHandler PlaybackEnded;
 
         AVAudioPlayer player;
 
@@ -168,7 +171,7 @@ namespace Plugin.SimpleAudioPlayer
             player.CurrentTime = position;
         }
 
-        public void SetVolume(double volume, double balance)
+        void SetVolume(double volume, double balance)
         {
             if (player == null)
                 return;
@@ -190,7 +193,10 @@ namespace Plugin.SimpleAudioPlayer
         }
 
         bool isDisposed = false;
-        protected virtual void Dispose(bool disposing)
+		///<Summary>
+		/// Dispose SimpleAudioPlayer and release resources
+		///</Summary>
+		protected virtual void Dispose(bool disposing)
         {
             if (isDisposed)
                 return;
@@ -206,7 +212,10 @@ namespace Plugin.SimpleAudioPlayer
             Dispose(false);
         }
 
-        public void Dispose()
+		///<Summary>
+		/// Dispose SimpleAudioPlayer and release resources
+		///</Summary>
+		public void Dispose()
         {
             Dispose(true);
 

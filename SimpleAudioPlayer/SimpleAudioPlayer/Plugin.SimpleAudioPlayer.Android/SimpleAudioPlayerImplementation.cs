@@ -234,7 +234,10 @@ namespace Plugin.SimpleAudioPlayer
 
         bool isDisposed = false;
 
-        protected virtual void Dispose(bool disposing)
+        ///<Summary>
+		/// Dispose SimpleAudioPlayer and release resources
+		///</Summary>
+       	protected virtual void Dispose(bool disposing)
         {
             if (isDisposed || player == null)
                 return;
@@ -250,7 +253,10 @@ namespace Plugin.SimpleAudioPlayer
             Dispose(false);
         }
 
-        public void Dispose()
+		///<Summary>
+		/// Dispose SimpleAudioPlayer and release resources
+		///</Summary>
+		public void Dispose()
         {
             Dispose(true);
 

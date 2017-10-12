@@ -26,7 +26,10 @@ namespace Plugin.SimpleAudioPlayer
          }
       }
 
-      public static ISimpleAudioPlayer CreateSimpleAudioPlayer()
+		///<Summary>
+		/// Create a new SimpleAudioPlayer object
+		///</Summary>
+		public static ISimpleAudioPlayer CreateSimpleAudioPlayer()
       {
 #if NETSTANDARD1_0
           return null;
