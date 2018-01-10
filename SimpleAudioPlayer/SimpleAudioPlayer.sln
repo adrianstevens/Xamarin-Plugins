@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.iOS", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\Plugin.SimpleAudioPlayer.iOS.csproj", "{2882AEEB-D4CD-4EB9-8A6C-6653B33681F0}"
 EndProject
@@ -18,9 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.tvOS", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.tvOS\Plugin.SimpleAudioPlayer.tvOS.csproj", "{53059B96-5C6C-4017-87EA-C89723DAC19F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer\Plugin.SimpleAudioPlayer.csproj", "{62EEA79F-67F9-4050-B5E6-6CFEED7C259C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer\Plugin.SimpleAudioPlayer.csproj", "{62EEA79F-67F9-4050-B5E6-6CFEED7C259C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.Abstractions", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\Plugin.SimpleAudioPlayer.Abstractions.csproj", "{14E29812-5191-4AFB-BA0C-01F289485951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer.Abstractions", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\Plugin.SimpleAudioPlayer.Abstractions.csproj", "{14E29812-5191-4AFB-BA0C-01F289485951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.Tizen", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\Plugin.SimpleAudioPlayer.Tizen.csproj", "{553D8C7E-18EC-4033-8B41-64114DA99F5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,6 +148,22 @@ Global
 		{14E29812-5191-4AFB-BA0C-01F289485951}.Release|x64.Build.0 = Release|Any CPU
 		{14E29812-5191-4AFB-BA0C-01F289485951}.Release|x86.ActiveCfg = Release|Any CPU
 		{14E29812-5191-4AFB-BA0C-01F289485951}.Release|x86.Build.0 = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|x64.Build.0 = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Debug|x86.Build.0 = Debug|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|ARM.Build.0 = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x64.ActiveCfg = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x64.Build.0 = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x86.ActiveCfg = Release|Any CPU
+		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

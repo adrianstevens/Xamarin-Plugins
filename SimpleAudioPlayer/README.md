@@ -14,6 +14,7 @@ SimpleAudioPlayer plays local files and audio data as a stream. This allows you 
 |Windows 10 UWP|10+|
 |Xamarin.Mac|All|
 |Xamarin.tvOS|All|
+|Tizen|4.0+|
 
 ### API Usage
 
