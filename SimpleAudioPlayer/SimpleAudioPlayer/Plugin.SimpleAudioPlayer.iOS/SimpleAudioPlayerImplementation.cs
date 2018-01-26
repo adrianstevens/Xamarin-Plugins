@@ -65,7 +65,7 @@ namespace Plugin.SimpleAudioPlayer
             {
                 _loop = value;
                 if (player != null)
-                    player.NumberOfLoops = _loop ? -1 : 1;
+                    player.NumberOfLoops = _loop ? -1 : 0;
             }
         }
         bool _loop;
