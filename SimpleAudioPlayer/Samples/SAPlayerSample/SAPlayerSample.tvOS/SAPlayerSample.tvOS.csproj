@@ -80,16 +80,16 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.6485.40063, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-beta\lib\Xamarintvos\Plugin.SimpleAudioPlayer.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.0-beta\lib\Xamarintvos\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.TVOS" />
+    <Reference Include="Plugin.SimpleAudioPlayer.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.1\lib\Xamarintvos\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.SimpleAudioPlayer">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.0.1\lib\Xamarintvos\Plugin.SimpleAudioPlayer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\App Icon &amp; Top Shelf Image.brandassets\Contents.json">
