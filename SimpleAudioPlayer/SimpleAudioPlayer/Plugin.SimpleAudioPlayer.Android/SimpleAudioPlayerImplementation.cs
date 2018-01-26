@@ -9,6 +9,7 @@ namespace Plugin.SimpleAudioPlayer
     /// <summary>
     /// Implementation for Feature
     /// </summary>
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
     {
         ///<Summary>
@@ -76,20 +77,26 @@ namespace Plugin.SimpleAudioPlayer
 
         string path;
 
+        /// <summary>
+        /// Instantiates a new SimpleAudioPlayer
+        /// </summary>
+        public SimpleAudioPlayerImplementation()
+        {
+             player = new Android.Media.MediaPlayer() { Looping = Loop };
+        }
+
         ///<Summary>
         /// Load wav or mp3 audio file as a stream
         ///</Summary>
         public bool Load(Stream audioStream)
         {
-            DeletePlayer();
+            player.Reset();
 
             //cache to the file system
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
             var fileStream = File.Create(path);
             audioStream.CopyTo(fileStream);
             fileStream.Close();
-
-            player = new Android.Media.MediaPlayer() { Looping = Loop };
 
             try
             {
@@ -116,11 +123,9 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Load(string fileName)
         {
-            DeletePlayer();
+            player.Reset();
 
             AssetFileDescriptor afd = Android.App.Application.Context.Assets.OpenFd(fileName);
-
-            player = new Android.Media.MediaPlayer() { Looping = Loop };
 
             player?.SetDataSource(afd.FileDescriptor, afd.StartOffset, afd.Length);
 
@@ -227,9 +232,13 @@ namespace Plugin.SimpleAudioPlayer
         {
             PlaybackEnded?.Invoke(sender, e);
 
-            player.SeekTo(0);
-            player.Stop();
-            player.Prepare();
+            //this improves stability on older devices but has minor performance impact
+            if (Android.OS.Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.M)
+            {
+                player.SeekTo(0);
+                player.Stop();
+                player.Prepare();
+            }
         }
 
         bool isDisposed = false;

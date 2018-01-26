@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xam.Plugin.SimpleAudioPlayer</id>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
-    <releaseNotes>Added macOS and tvOS support, improved cleanup on all platforms</releaseNotes>
-    <copyright>Copyright ©2017 Adrian Stevens</copyright>
+    <releaseNotes>iOS and Android fixes and performance improvements</releaseNotes>
+    <copyright>Copyright ©2017-2018 Adrian Stevens</copyright>
     <licenseUrl>
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
     </licenseUrl>
