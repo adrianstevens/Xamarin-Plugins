@@ -45,7 +45,12 @@ x64/
 *.log
 *.vspscc
 *.vssscc
+*.ide
+*.ide-shm
+*.ide-wal
+*.lock
 .builds
+
 
 # Visual C++ cache files
 ipch/
