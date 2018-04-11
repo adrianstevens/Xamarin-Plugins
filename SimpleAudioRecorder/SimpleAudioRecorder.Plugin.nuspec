@@ -57,8 +57,8 @@
 		<!--UWP-->
 		<file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.UWP\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\UAP10" />
 		
-		<!--Xamarin.Mac
-		<file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.macOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.Mac20" /> -->
+		<!--Xamarin.Mac-->
+		<file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.macOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.Mac20" />
 
     <!--Xamarin.tvOS
     <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.tvOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarintvos" /> -->

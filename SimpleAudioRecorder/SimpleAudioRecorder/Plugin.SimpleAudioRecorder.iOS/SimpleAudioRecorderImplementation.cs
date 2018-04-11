@@ -40,6 +40,7 @@ namespace Plugin.SimpleAudioRecorder
 
         void InitAudioSession()
         {
+#if __IOS_
             var audioSession = AVAudioSession.SharedInstance();
 
             var err = audioSession.SetCategory(AVAudioSessionCategory.PlayAndRecord);
@@ -47,6 +48,7 @@ namespace Plugin.SimpleAudioRecorder
 
             err = audioSession.SetActive(true);
             if (err != null) throw new Exception(err.ToString());
+#endif
         }
 
         public Task RecordAsync()

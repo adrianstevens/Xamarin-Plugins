@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{7F438729-84CB-463E-93DE-A21880582DE9}|Default">
+  <MonoDevelop.Ide.ItemProperties.Plugin.SimpleAudioRecorder.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleAudioRecorder.Plugin.nuspec">
+    <Files>
+      <File FileName="SimpleAudioRecorder.Plugin.nuspec" Line="64" Column="138" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
