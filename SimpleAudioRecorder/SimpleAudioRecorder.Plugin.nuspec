@@ -16,10 +16,10 @@
 
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-      A light-weight and easy to use cross-platform audio recorder for Windows UWP, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.tvOS and Xamarin.Forms.
+      A light-weight and easy to use cross-platform audio recorder for Windows UWP, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, and Xamarin.Forms.
     </description>
 		<summary>Cross-platform audio recorder for Xamarin and Windows UWP</summary>
-		<tags>audio, record, sound, music, wav, wave, xamarin, .net, standard, pcl, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
+		<tags>audio, record, sound, music, wav, wave, xamarin, .net, standard, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
 		<dependencies>
       <group targetFramework="netstandard1.0">
         <dependency id="NETStandard.Library" version="1.6.1" />
@@ -30,9 +30,10 @@
       </group>
       <group targetFramework="Xamarin.Mac20">
       </group>
-      <group targetFramework="portable-net45+win+wpa81+wp80">
-      </group>
       <group targetFramework="uap">
+      </group>
+      <!--
+      <group targetFramework="portable-net45+win+wpa81+wp80">
       </group>
       <group targetFramework="dotnet">
       </group>
@@ -41,7 +42,7 @@
       <group targetFramework="xamarinwatchos">
       </group>
       <group targetFramework="tizen">
-      </group>
+      </group> -->
 		</dependencies>
 	</metadata>
 	<files>
