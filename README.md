@@ -2,4 +2,4 @@ The home for cross-platform Windows and Xamarin plugins written by Adrian Steven
 
 SimpleAudioPlayer is stable and published as a nuget package on nuget.org.
 
-SecureLocalStorage is a work-in-progress and should not be considered secure or stable.
+SimpleAudioRecorder is in alpha - UWP, Android and iOS should all be working but have had limited testing.
