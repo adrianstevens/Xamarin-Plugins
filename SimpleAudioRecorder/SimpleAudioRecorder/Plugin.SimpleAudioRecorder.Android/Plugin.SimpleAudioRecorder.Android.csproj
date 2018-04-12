@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plugin.SimpleAudioRecorder.Android</RootNamespace>
-    <AssemblyName>Plugin.SimpleAudioRecorder.Android</AssemblyName>
+    <AssemblyName>Plugin.SimpleAudioRecorder</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>

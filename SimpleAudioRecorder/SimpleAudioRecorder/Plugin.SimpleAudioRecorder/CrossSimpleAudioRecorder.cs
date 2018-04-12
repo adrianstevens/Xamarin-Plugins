@@ -9,13 +9,31 @@ namespace Plugin.SimpleAudioRecorder
     /// </summary>
     public class CrossSimpleAudioRecorder
     {
+        static Lazy<ISimpleAudioRecorder> Implementation = new Lazy<ISimpleAudioRecorder>(() => CreateSimpleAudioRecorder(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+
+        /// <summary>
+        /// Current settings to use
+        /// </summary>
+        public static ISimpleAudioRecorder Current
+        {
+            get
+            {
+                var ret = Implementation.Value;
+                if (ret == null)
+                {
+                    throw NotImplementedInReferenceAssembly();
+                }
+                return ret;
+            }
+        }
+
         ///<Summary>
 		/// Create a new SimpleAudioPlayer object
 		///</Summary>
 		public static ISimpleAudioRecorder CreateSimpleAudioRecorder()
         {
 #if NETSTANDARD1_3
-          return null;
+            return null;
 #else
             return new SimpleAudioRecorderImplementation();
 #endif

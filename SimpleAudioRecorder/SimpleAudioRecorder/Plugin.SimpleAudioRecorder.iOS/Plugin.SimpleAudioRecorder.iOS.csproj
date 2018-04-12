@@ -8,9 +8,9 @@
     <ProjectGuid>{B732BAC0-FC25-40AC-BF35-66C4EF01252A}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Plugin.SimpleAudioRecorder.iOS</RootNamespace>
+    <RootNamespace>Plugin.SimpleAudioRecorder</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Plugin.SimpleAudioRecorder.iOS</AssemblyName>
+    <AssemblyName>Plugin.SimpleAudioRecorder</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
