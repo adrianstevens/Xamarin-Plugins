@@ -50,5 +50,7 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>XFSpeechToText</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>This app needs access to the microphone to record audio</string>
 </dict>
 </plist>

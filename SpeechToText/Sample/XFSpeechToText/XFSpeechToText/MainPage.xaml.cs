@@ -4,6 +4,9 @@ using Plugin.SpeechToText;
 using Plugin.SimpleAudioRecorder;
 using Plugin.SimpleAudioPlayer;
 using Plugin.SimpleAudioPlayer.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using System.Threading.Tasks;
 
 namespace XFSpeechToText
 {
@@ -25,11 +28,40 @@ namespace XFSpeechToText
             btnStop.Clicked += BtnStop_Clicked;
             btnPlay.Clicked += BtnPlay_Clicked;
             btnToText.Clicked += BtnToText_Clicked;
+
+            CheckPermissions();
 		}
+
+        async Task CheckPermissions()
+        {
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Microphone);
+
+                if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Microphone))
+                {
+                    await DisplayAlert("Need Microphone", "This app needs access to the microphone to record audio", "OK");
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Microphone);
+                    
+                    if (results.ContainsKey(Permission.Microphone))
+                        status = results[Permission.Microphone];
+
+                    if (status == PermissionStatus.Granted)
+                    {
+                        
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
 
         private async void BtnToText_Clicked(object sender, EventArgs e)
         {
-            var speech = new SpeechToText("fb3c4e67a81242f794cb56ebb279271d");
+            var speech = new SpeechToText("{bing speech api key goes here");
 
             var result = await speech.RecognizeSpeechAsync(audioRecording.GetFilePath());
 
