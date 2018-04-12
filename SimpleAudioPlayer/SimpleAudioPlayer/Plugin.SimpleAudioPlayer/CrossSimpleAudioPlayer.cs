@@ -1,5 +1,4 @@
-﻿using Android.Runtime;
-using Plugin.SimpleAudioPlayer.Abstractions;
+﻿using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 
 namespace Plugin.SimpleAudioPlayer
@@ -7,7 +6,9 @@ namespace Plugin.SimpleAudioPlayer
     /// <summary>
     /// Cross platform SimpleAudioPlayer implemenations
     /// </summary>
+#if __ANDROID__
     [Android.Runtime.Preserve(AllMembers = true)]
+#endif
     public class CrossSimpleAudioPlayer
    {
       static Lazy<ISimpleAudioPlayer> Implementation = new Lazy<ISimpleAudioPlayer>(() => CreateSimpleAudioPlayer(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
