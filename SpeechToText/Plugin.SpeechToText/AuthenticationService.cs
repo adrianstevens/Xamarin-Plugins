@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace SpeechToText
+namespace Plugin.SpeechToText
 {
     internal class AuthenticationService
     {

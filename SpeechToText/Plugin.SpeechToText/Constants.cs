@@ -1,4 +1,4 @@
-﻿namespace SpeechToText
+﻿namespace Plugin.SpeechToText
 {
     internal static class Constants
     {

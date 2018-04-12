@@ -26,9 +26,13 @@ namespace XFSpeechToText
             btnToText.Clicked += BtnToText_Clicked;
 		}
 
-        private void BtnToText_Clicked(object sender, EventArgs e)
+        private async void BtnToText_Clicked(object sender, EventArgs e)
         {
-            
+            var speech = new SpeechToText.SpeechToText("fb3c4e67a81242f794cb56ebb279271d");
+
+            var result = await speech.RecognizeSpeechAsync(audioRecording.GetFilePath());
+
+            System.Diagnostics.Debug.WriteLine(lblText.Text = result.DisplayText);
         }
 
         private void BtnPlay_Clicked(object sender, EventArgs e)
