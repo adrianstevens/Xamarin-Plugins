@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using Plugin.SpeechToText;
 using Plugin.SimpleAudioRecorder;
 using Plugin.SimpleAudioPlayer;
 using Plugin.SimpleAudioPlayer.Abstractions;
@@ -28,7 +29,7 @@ namespace XFSpeechToText
 
         private async void BtnToText_Clicked(object sender, EventArgs e)
         {
-            var speech = new SpeechToText.SpeechToText("fb3c4e67a81242f794cb56ebb279271d");
+            var speech = new SpeechToText("fb3c4e67a81242f794cb56ebb279271d");
 
             var result = await speech.RecognizeSpeechAsync(audioRecording.GetFilePath());
 
