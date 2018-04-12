@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xam.Plugin.SpeechToText</id>
-		<version>0.0.1-alpha</version>
+		<version>0.0.2-alpha</version>
 		<title>SpeechToText Plugin for .NET</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
@@ -22,6 +22,7 @@
 		<dependencies>
       <group targetFramework="netstandard1.3">
         <dependency id="NETStandard.Library" version="1.6.1" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
       </group>
 		</dependencies>
 	</metadata>
