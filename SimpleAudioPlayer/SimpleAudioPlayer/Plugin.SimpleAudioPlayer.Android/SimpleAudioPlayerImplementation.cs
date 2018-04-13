@@ -1,5 +1,4 @@
 using Android.Content.Res;
-using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
 using Uri = Android.Net.Uri;

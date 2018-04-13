@@ -1,6 +1,5 @@
 using AVFoundation;
 using Foundation;
-using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
 

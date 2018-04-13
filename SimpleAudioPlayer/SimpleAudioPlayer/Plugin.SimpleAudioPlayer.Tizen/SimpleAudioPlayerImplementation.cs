@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Plugin.SimpleAudioPlayer.Abstractions;
 using Tizen.Applications;
 using Tizen.Multimedia;
 

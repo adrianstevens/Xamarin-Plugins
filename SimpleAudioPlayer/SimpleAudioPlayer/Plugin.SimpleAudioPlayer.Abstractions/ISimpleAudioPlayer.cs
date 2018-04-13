@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Plugin.SimpleAudioPlayer.Abstractions
+namespace Plugin.SimpleAudioPlayer
 {
   /// <summary>
   /// Interface for SimpleAudioPlayer
