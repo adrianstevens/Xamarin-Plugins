@@ -7,7 +7,7 @@ The project uses .NET Standard 1.3, this is to get access to HttpClient without 
 
 The plugin works very nicely with SimpleAudioRecorder - you can see an example in the *Samples* folder.
 
-##Contributions
+## Contributions
 
 Contributions are welcome! If you find a bug want a feature added please report it.
 If you want to contribute code please file an issue, create a branch, and file a pull request.
