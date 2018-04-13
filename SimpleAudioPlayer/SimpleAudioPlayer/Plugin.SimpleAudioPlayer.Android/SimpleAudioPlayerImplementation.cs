@@ -90,6 +90,7 @@ namespace Plugin.SimpleAudioPlayer
         public bool Load(Stream audioStream)
         {
             player.Reset();
+            player.Completion -= OnPlaybackEnded;
 
             //cache to the file system
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
