@@ -179,7 +179,7 @@ namespace Plugin.SimpleAudioPlayer
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 
-            balance = Math.Max(0, balance);
+            balance = Math.Max(-1, balance);
             balance = Math.Min(1, balance);
 
             var right = (balance < 0) ? volume * -1 * balance : volume;
