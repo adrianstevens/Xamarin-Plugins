@@ -8,7 +8,11 @@ namespace Plugin.SimpleAudioRecorder
 {
     public class SimpleAudioRecorderImplementation : ISimpleAudioRecorder
     {
+#if __IOS__
+        public bool CanRecordAudio => AVAudioSession.SharedInstance().InputAvailable;
+#else
         public bool CanRecordAudio => true;
+#endif
 
         AVAudioRecorder recorder;
 
@@ -16,6 +20,19 @@ namespace Plugin.SimpleAudioRecorder
         {
             InitAudioSession();
             InitAudioRecorder();
+        }
+
+        void InitAudioSession()
+        {
+#if __IOS__
+            var audioSession = AVAudioSession.SharedInstance();
+
+            var err = audioSession.SetCategory(AVAudioSessionCategory.PlayAndRecord);
+            if (err != null) throw new Exception(err.ToString());
+
+            err = audioSession.SetActive(true);
+            if (err != null) throw new Exception(err.ToString());
+#endif
         }
 
         void InitAudioRecorder()
@@ -36,19 +53,6 @@ namespace Plugin.SimpleAudioRecorder
             var tempFileName = Path.Combine(libFolder, Path.GetTempFileName());
 
             return tempFileName;
-        }
-
-        void InitAudioSession()
-        {
-#if __IOS_
-            var audioSession = AVAudioSession.SharedInstance();
-
-            var err = audioSession.SetCategory(AVAudioSessionCategory.PlayAndRecord);
-            if (err != null) throw new Exception(err.ToString());
-
-            err = audioSession.SetActive(true);
-            if (err != null) throw new Exception(err.ToString());
-#endif
         }
 
         public Task RecordAsync()

@@ -11,14 +11,16 @@ namespace Plugin.SimpleAudioRecorder
     {
         MediaCapture mediaCapture;
 
-        public bool CanRecordAudio => true;
+        public bool CanRecordAudio { get; private set; } = true;
 
         string audioFilePath;
 
         public async Task RecordAsync()
         {
             if (mediaCapture != null)
+            {
                 throw new InvalidOperationException("Recording already in progress");
+            }
 
             try
             {
@@ -31,6 +33,7 @@ namespace Plugin.SimpleAudioRecorder
             }
             catch (Exception ex)
             {
+                CanRecordAudio = false;
                 DeleteMediaCapture();
 
                 if (ex.InnerException != null && ex.InnerException.GetType() == typeof(UnauthorizedAccessException))
@@ -52,6 +55,7 @@ namespace Plugin.SimpleAudioRecorder
             }
             catch
             {
+                CanRecordAudio = false;
                 DeleteMediaCapture();
                 throw;
             }
@@ -67,12 +71,14 @@ namespace Plugin.SimpleAudioRecorder
 
             mediaCapture.RecordLimitationExceeded += (MediaCapture sender) =>
             {
+                CanRecordAudio = false;
                 DeleteMediaCapture();
                 throw new Exception("Record Limitation Exceeded");
             };
 
             mediaCapture.Failed += (MediaCapture sender, MediaCaptureFailedEventArgs errorEventArgs) =>
             {
+                CanRecordAudio = false;
                 DeleteMediaCapture();
                 throw new Exception(string.Format("Code: {0}. {1}", errorEventArgs.Code, errorEventArgs.Message));
             };

@@ -10,7 +10,7 @@ namespace Plugin.SimpleAudioRecorder
 {
     public class SimpleAudioRecorderImplementation : ISimpleAudioRecorder
     {
-        public bool CanRecordAudio => true;
+        public bool CanRecordAudio { get; private set; } = true;
 
         AudioRecord audioRecord;
 
@@ -19,6 +19,12 @@ namespace Plugin.SimpleAudioRecorder
 
         int bufferSize;
         int sampleRate;
+
+        public SimpleAudioRecorderImplementation ()
+        {
+            var pm = Application.Context.PackageManager;
+            CanRecordAudio = pm.HasSystemFeature(Android.Content.PM.PackageManager.FeatureMicrophone);
+        }
 
         AudioRecord GetAudioRecord(int sampleRate)
         {
