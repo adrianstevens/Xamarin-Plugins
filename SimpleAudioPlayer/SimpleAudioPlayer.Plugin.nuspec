@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>Xam.Plugin.SimpleAudioPlayer</id>
-		<version>1.0.2</version>
+		<version>1.1.0</version>
 		<title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
-    <releaseNotes>iOS and Android fixes and performance improvements</releaseNotes>
+    <releaseNotes>Added Tizen 4 support! + several bug fixes</releaseNotes>
     <copyright>Copyright ©2017-2018 Adrian Stevens</copyright>
     <licenseUrl>
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
@@ -30,15 +30,13 @@
       </group>
       <group targetFramework="Xamarin.Mac20">
       </group>
-      <group targetFramework="portable-net45+win+wpa81+wp80">
-      </group>
       <group targetFramework="uap">
       </group>
       <group targetFramework="dotnet">
       </group>
       <group targetFramework="xamarintvos">
       </group>
-      <group targetFramework="xamarinwatchos">
+      <group targetFramework="tizen">
       </group>
 		</dependencies>
 	</metadata>
@@ -50,7 +48,7 @@
     <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Android\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\MonoAndroid10" />
 		
 		<!--Xamarin.iOS-->
-		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\bin\iPhone\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarin.iOS10" />
+		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarin.iOS10" />
 
 		<!--UWP-->
 		<file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.UWP\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\UAP10" />
@@ -60,6 +58,9 @@
 
     <!--Xamarin.tvOS-->
     <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.tvOS\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarintvos" />
+    
+    <!--Tizen-->
+    <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\tizen4" />
 
 	</files>
 </package>

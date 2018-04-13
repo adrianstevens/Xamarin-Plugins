@@ -1,4 +1,3 @@
-using Plugin.SimpleAudioPlayer.Abstractions;
 using System;
 using System.IO;
 using Windows.Media.Core;
