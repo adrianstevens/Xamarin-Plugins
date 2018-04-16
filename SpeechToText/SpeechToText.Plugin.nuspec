@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
-		<id>Xam.Plugin.SpeechToText</id>
-		<version>0.0.2.1-alpha</version>
+		<id>Plugin.SpeechToText</id>
+		<version>0.1.0-beta</version>
 		<title>SpeechToText Plugin for .NET</title>
 		<authors>Adrian Stevens</authors>
 		<owners>Adrian Stevens</owners>
-    <releaseNotes>First release</releaseNotes>
+    <releaseNotes>First public release</releaseNotes>
     <copyright>Copyright ©2018 Adrian Stevens</copyright>
     <licenseUrl>
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
@@ -15,10 +15,10 @@
 
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-      A speech to text plugin that uses the Bing Speech API
+      A speech-to-text plugin that use the Bing Speech API
     </description>
-		<summary>A speech to text plugin that uses the Bing Speech API</summary>
-		<tags>speech, text, bing, cognitive, .NET</tags>
+		<summary>A .NET speech-to-text plugin for .NET Stanard, Windows, Xamarin, etc. that uses the Bing Speech API (Bing Speech API key required https://azure.microsoft.com/en-us/services/cognitive-services/speech/)</summary>
+		<tags>speech, text, audio, Bing, cognitive, Speech API, .NET, C#, .NET Standard, Windows, Xamarin</tags>
 		<dependencies>
       <group targetFramework="netstandard1.3">
         <dependency id="NETStandard.Library" version="1.6.1" />

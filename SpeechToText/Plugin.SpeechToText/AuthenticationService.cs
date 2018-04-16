@@ -10,7 +10,7 @@ namespace Plugin.SpeechToText
 
         string accessToken;
 
-        const int TokenLifeTime = 9;
+        const int TokenLifeTime = 9; //expires in 10 minutes https://docs.microsoft.com/en-us/azure/cognitive-services/speech/how-to/how-to-authentication?tabs=Powershell
 
         DateTime tokenTimeStamp = DateTime.MinValue;
 
