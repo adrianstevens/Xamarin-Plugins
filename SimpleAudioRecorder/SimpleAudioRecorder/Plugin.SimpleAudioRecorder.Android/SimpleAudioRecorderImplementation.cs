@@ -54,7 +54,7 @@ namespace Plugin.SimpleAudioRecorder
 
         public Task RecordAsync()
         {
-            if (audioRecord != null && audioRecord.RecordingState == RecordState.Recording)
+            if (CanRecordAudio == false || audioRecord?.RecordingState == RecordState.Recording)
                 return Task.CompletedTask;
 
             var audioManager = (AudioManager)Application.Context.GetSystemService(Context.AudioService);
@@ -105,9 +105,9 @@ namespace Plugin.SimpleAudioRecorder
 
         public Task<AudioRecording> StopAsync()
         {
-            if (audioRecord != null && audioRecord.RecordingState == RecordState.Recording)
+            if (audioRecord?.RecordingState == RecordState.Recording)
             {
-                audioRecord.Stop();
+                audioRecord?.Stop();
             }
 
             audioFilePath = GetTempFileName();
@@ -122,11 +122,7 @@ namespace Plugin.SimpleAudioRecorder
             FileInputStream inputStream = null;
             FileOutputStream outputStream = null;
 
-            long totalAudioLength = 0;
-            long totalDataLength = totalAudioLength + 36;
-
             int channels = 2;
-
             long byteRate = 16 * sampleRate * channels / 8;
 
             var data = new byte[bufferSize];
@@ -135,8 +131,8 @@ namespace Plugin.SimpleAudioRecorder
             {
                 inputStream = new FileInputStream(sourcePath);
                 outputStream = new FileOutputStream(destinationPath);
-                totalAudioLength = inputStream.Channel.Size();
-                totalDataLength = totalAudioLength + 36;
+                var totalAudioLength = inputStream.Channel.Size();
+                var totalDataLength = totalAudioLength + 36;
 
                 WriteWaveFileHeader(outputStream, totalAudioLength, totalDataLength, sampleRate, channels, byteRate);
 
@@ -149,10 +145,7 @@ namespace Plugin.SimpleAudioRecorder
                 outputStream.Close();
 
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
         }
 
         void WriteWaveFileHeader(FileOutputStream outputStream, long audioLength, long dataLength, long sampleRate, int channels, long byteRate)
@@ -160,7 +153,7 @@ namespace Plugin.SimpleAudioRecorder
             byte[] header = new byte[44];
 
             header[0] = Convert.ToByte('R'); // RIFF/WAVE header
-            header[1] = Convert.ToByte('I'); // (byte)'I';
+            header[1] = Convert.ToByte('I'); // (byte)'I'
             header[2] = Convert.ToByte('F');
             header[3] = Convert.ToByte('F');
             header[4] = (byte)(dataLength & 0xff);
@@ -171,11 +164,11 @@ namespace Plugin.SimpleAudioRecorder
             header[9] = Convert.ToByte('A');
             header[10] = Convert.ToByte('V');
             header[11] = Convert.ToByte('E');
-            header[12] = Convert.ToByte('f');// 'fmt ' chunk
+            header[12] = Convert.ToByte('f'); // fmt chunk
             header[13] = Convert.ToByte('m');
             header[14] = Convert.ToByte('t');
             header[15] = (byte)' ';
-            header[16] = 16; // 4 bytes: size of 'fmt ' chunk
+            header[16] = 16; // 4 bytes - size of fmt chunk
             header[17] = 0;
             header[18] = 0;
             header[19] = 0;
