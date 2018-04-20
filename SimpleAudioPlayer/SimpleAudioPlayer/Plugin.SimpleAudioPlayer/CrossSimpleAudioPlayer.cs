@@ -1,5 +1,4 @@
-﻿using Plugin.SimpleAudioPlayer.Abstractions;
-using System;
+﻿using System;
 
 namespace Plugin.SimpleAudioPlayer
 {

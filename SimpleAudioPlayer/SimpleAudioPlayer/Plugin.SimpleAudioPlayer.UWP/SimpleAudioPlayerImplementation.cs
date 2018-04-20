@@ -31,8 +31,8 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Volume
         {
-            get { return player == null ? 0 : player.Volume; }
-            set { SetVolume(value, Balance); }
+            get => player?.Volume ?? 0;
+            set => SetVolume(value, Balance);
         }
 
         ///<Summary>
@@ -40,10 +40,9 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Balance
         {
-            get { return _balance; }
-            set { SetVolume(Volume, _balance = value); }
+            get => player?.AudioBalance ?? 0;
+            set { SetVolume(Volume, value); }
         }
-        double _balance = 0;
 
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
@@ -63,7 +62,7 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public bool Loop
         {
-            get { return _loop; }
+            get => _loop;
             set
             {
                 _loop = value;
@@ -112,7 +111,7 @@ namespace Plugin.SimpleAudioPlayer
                 player.MediaEnded += OnPlaybackEnded;
             }
 
-            return (player == null || player.Source == null) ? false : true;
+            return player != null && player.Source != null;
         }
 
         void DeletePlayer()
@@ -186,19 +185,10 @@ namespace Plugin.SimpleAudioPlayer
 
         void SetVolume(double volume, double balance)
         {
-            if (player == null || isDisposed)
-                return;
+            if (player == null || isDisposed) return;
 
-            volume = Math.Max(0, volume);
-            volume = Math.Min(1, volume);
-
-            balance = Math.Max(0, balance);
-            balance = Math.Min(1, balance);
-
-            var right = (balance < 0) ? volume * -1 * balance : volume;
-            var left = (balance > 0) ? volume * 1 * balance : volume;
-
-            player.Volume = volume;
+            player.Volume = Math.Min(1, Math.Max(0, volume));
+            player.AudioBalance = Math.Min(1, Math.Max(-1, balance));
         }
 
         MediaPlayer GetPlayer ()
