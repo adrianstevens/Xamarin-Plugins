@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-	<metadata minClientVersion="2.8.3">
-		<id>Xam.Plugin.SimpleAudioRecorder</id>
-		<version>0.3.0-alpha</version>
-		<title>SimpleAudioRecorder Plugin for Xamarin and Windows</title>
-		<authors>Adrian Stevens</authors>
-		<owners>Adrian Stevens</owners>
+  <metadata minClientVersion="2.8.3">
+    <id>Xam.Plugin.SimpleAudioRecorder</id>
+    <version>0.3.0-alpha</version>
+    <title>SimpleAudioRecorder Plugin for Xamarin and Windows</title>
+    <authors>Adrian Stevens</authors>
+    <owners>Adrian Stevens</owners>
     <releaseNotes>First release</releaseNotes>
     <copyright>Copyright ©2018 Adrian Stevens</copyright>
     <licenseUrl>
@@ -14,13 +14,13 @@
     <projectUrl>https://github.com/adrianstevens/Xamarin-Plugins</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/adrianstevens/Xamarin-Plugins/master/SimpleAudioRecorder/icon_128.png</iconUrl>
 
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
       A light-weight and easy to use cross-platform audio recorder for Windows UWP, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, and Xamarin.Forms.
     </description>
-		<summary>Cross-platform audio recorder for Xamarin and Windows UWP</summary>
-		<tags>audio, record, sound, music, wav, wave, xamarin, .net, standard, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
-		<dependencies>
+    <summary>Cross-platform audio recorder for Xamarin and Windows UWP</summary>
+    <tags>audio, record, sound, music, wav, wave, xamarin, .net, standard, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
+    <dependencies>
       <group targetFramework="netstandard1.0">
         <dependency id="NETStandard.Library" version="1.6.1" />
       </group>
@@ -43,23 +43,23 @@
       </group>
       <group targetFramework="tizen">
       </group> -->
-		</dependencies>
-	</metadata>
-	<files>
-		<!--Core-->
+    </dependencies>
+  </metadata>
+  <files>
+    <!--Core-->
     <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder\bin\Release\netstandard1.3\Plugin.SimpleAudioRecorder.*" target="lib\netstandard1.3" />
 
-		<!--Xamarin.Android-->
+    <!--Xamarin.Android-->
     <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.Android\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\MonoAndroid10" />
-		
-		<!--Xamarin.iOS-->
-		<file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.iOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.iOS10" />
+    
+    <!--Xamarin.iOS-->
+    <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.iOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.iOS10" />
 
-		<!--UWP-->
-		<file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.UWP\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\UAP10" />
-		
-		<!--Xamarin.Mac-->
-		<file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.macOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.Mac20" />
+    <!--UWP-->
+    <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.UWP\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\UAP10" />
+    
+    <!--Xamarin.Mac-->
+    <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.macOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.Mac20" />
 
     <!--Xamarin.tvOS
     <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.tvOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarintvos" /> -->
@@ -67,5 +67,5 @@
     <!--Tizen
     <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.Tizen\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\tizen4" /> -->
 
-	</files>
+  </files>
 </package>
