@@ -81,7 +81,8 @@ namespace Plugin.SimpleAudioPlayer
         /// </summary>
         public SimpleAudioPlayerImplementation()
         {
-             player = new Android.Media.MediaPlayer() { Looping = Loop };
+            player = new Android.Media.MediaPlayer() { Looping = Loop };
+            player.Completion += OnPlaybackEnded;
         }
 
         ///<Summary>
@@ -90,7 +91,6 @@ namespace Plugin.SimpleAudioPlayer
         public bool Load(Stream audioStream)
         {
             player.Reset();
-            player.Completion -= OnPlaybackEnded;
 
             //cache to the file system
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
@@ -135,9 +135,6 @@ namespace Plugin.SimpleAudioPlayer
         bool PreparePlayer()
         {
             player?.Prepare();
-
-            if (player != null)
-                player.Completion += OnPlaybackEnded;
 
             return (player == null) ? false : true;
         }
@@ -204,10 +201,9 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Set the current playback position (in seconds)
         ///</Summary>
-        public void Seek (double position)
+        public void Seek(double position)
         {
-            if (player != null)
-                player.SeekTo((int)position*1000);
+            player?.SeekTo((int)position*1000);
         }
 
         ///<Summary>
@@ -219,13 +215,13 @@ namespace Plugin.SimpleAudioPlayer
             volume = Math.Max(0, volume);
             volume = Math.Min(1, volume);
 
-            balance = Math.Max(0, balance);
+            balance = Math.Max(-1, balance);
             balance = Math.Min(1, balance);
 
             var right = (balance < 0) ? volume * -1 * balance : volume;
             var left = (balance > 0) ? volume * 1 * balance : volume;
 
-            player.SetVolume((float)left, (float)right);
+            player?.SetVolume((float)left, (float)right);
         }
 
         void OnPlaybackEnded(object sender, EventArgs e)

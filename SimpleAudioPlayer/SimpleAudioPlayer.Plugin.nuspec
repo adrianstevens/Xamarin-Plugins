@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>Xam.Plugin.SimpleAudioPlayer</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
     <authors>Adrian Stevens</authors>
     <owners>Adrian Stevens</owners>
-    <releaseNotes>Added Tizen 4 support! + several bug fixes</releaseNotes>
+    <releaseNotes>bug fixes</releaseNotes>
     <copyright>Copyright ©2017-2018 Adrian Stevens</copyright>
     <licenseUrl>
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
