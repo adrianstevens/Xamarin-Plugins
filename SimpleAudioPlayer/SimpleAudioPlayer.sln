@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer.Abstractions", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Abstractions\Plugin.SimpleAudioPlayer.Abstractions.csproj", "{14E29812-5191-4AFB-BA0C-01F289485951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.Tizen", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\Plugin.SimpleAudioPlayer.Tizen.csproj", "{553D8C7E-18EC-4033-8B41-64114DA99F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer.Tizen", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\Plugin.SimpleAudioPlayer.Tizen.csproj", "{553D8C7E-18EC-4033-8B41-64114DA99F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.WPF", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.WPF\Plugin.SimpleAudioPlayer.WPF.csproj", "{E39230FA-8B4B-4229-A847-EAB0E3B53877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -164,6 +166,22 @@ Global
 		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x64.Build.0 = Release|Any CPU
 		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x86.Build.0 = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x64.Build.0 = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x86.Build.0 = Debug|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|ARM.Build.0 = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x64.ActiveCfg = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x64.Build.0 = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x86.ActiveCfg = Release|Any CPU
+		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
