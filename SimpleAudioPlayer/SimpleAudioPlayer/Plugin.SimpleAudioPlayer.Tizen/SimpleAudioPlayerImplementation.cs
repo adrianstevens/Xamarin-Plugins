@@ -18,57 +18,27 @@ namespace Plugin.SimpleAudioPlayer
 
 		private long previousSeekTime = -1L;
 		private int lastRequestedSeekPosition;
-		Player player = null;
+
+		Player player;
 
 		///<Summary>
 		/// Length of audio in seconds
 		///</Summary>
-		public double Duration
-		{
-			get
-			{
-				try
-				{
-					return ((double)player.StreamInfo.GetDuration() / 1000.0);
-				}
-				catch
-				{
-					return 0;
-				}
-			}
-		}
+		public double Duration => (player?.StreamInfo?.GetDuration() / 1000.0) ?? 0;
 
-		///<Summary>
-		/// Current position of audio playback in seconds
-		///</Summary>
-		public double CurrentPosition
-		{
-			get
-			{
-				try
-				{
-					return ((double)player.GetPlayPosition() / 1000.0);
-				}
-				catch
-				{
-					return 0;
-				}
-			}
-		}
 
-		///<Summary>
-		/// Playback volume (0 to 1)
-		///</Summary>
-		public double Volume
+        ///<Summary>
+        /// Current position of audio playback in seconds
+        ///</Summary>
+        public double CurrentPosition => (player?.GetPlayPosition() / 1000.0) ?? 0;
+
+        ///<Summary>
+        /// Playback volume (0 to 1)
+        ///</Summary>
+        public double Volume 
 		{
-			get
-			{
-				return player == null ? 0 : player.Volume;
-			}
-			set
-			{
-				SetVolume(value, Balance);
-			}
+			get => player?.Volume ?? 0;
+			set => SetVolume(value, Balance);
 		}
 
 		///<Summary>
@@ -76,38 +46,23 @@ namespace Plugin.SimpleAudioPlayer
 		///</Summary>
 		public double Balance
 		{
-			get
-			{
-				return _balance;
-			}
-			set
-			{
-				SetVolume(Volume, _balance = value);
-			}
+            get => _balance;
+			set => SetVolume(Volume, _balance = value);
 		}
 		double _balance = 0;
 
 		///<Summary>
 		/// Indicates if the currently loaded audio file is playing
 		///</Summary>
-		public bool IsPlaying
-		{
-			get
-			{
-				return player == null ? false : player.State == PlayerState.Playing;
-			}
-		}
+		public bool IsPlaying => player == null ? false : player.State == PlayerState.Playing;
 
 		///<Summary>
 		/// Continously repeats the currently playing sound
 		///</Summary>
 		public bool Loop
 		{
-			get
-			{
-				return _loop;
-			}
-			set
+            get => _loop;
+			set 
 			{
 				_loop = value;
 				if (player != null)
@@ -119,27 +74,9 @@ namespace Plugin.SimpleAudioPlayer
 		///<Summary>
 		/// Indicates if the position of the loaded audio file can be updated
 		///</Summary>
-		public bool CanSeek
-		{
-			get
-			{
-				return player == null ? false : true;
-			}
-		}
+		public bool CanSeek => player != null;
 
-		private static byte[] ReadBuffer(Stream input)
-		{
-			byte[] buffer = new byte[16 * 1024];
-			using (MemoryStream ms = new MemoryStream())
-			{
-				int read;
-				while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-				{
-					ms.Write(buffer, 0, read);
-				}
-				return ms.ToArray();
-			}
-		}
+		
 
 		///<Summary>
 		/// Load wav or mp3 audio file as a stream
@@ -345,11 +282,8 @@ namespace Plugin.SimpleAudioPlayer
 			volume = Math.Max(0, volume);
 			volume = Math.Min(1, volume);
 
-			balance = Math.Max(0, balance);
-			balance = Math.Min(1, balance);
-
-			var right = (balance < 0) ? volume * -1 * balance : volume;
-			var left = (balance > 0) ? volume * 1 * balance : volume;
+			//balance = Math.Max(-1, balance);
+			//balance = Math.Min(1, balance);
 
 			player.Volume = (float)volume;
 		}
@@ -379,12 +313,27 @@ namespace Plugin.SimpleAudioPlayer
 			}
 		}
 
-		private void OnPlaybackEnded(object sender, EventArgs e)
+		void OnPlaybackEnded(object sender, EventArgs e)
 		{
 			PlaybackEnded?.Invoke(sender, e);
 		}
 
-		bool isDisposed = false;
+        static byte[] ReadBuffer(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+
+            using (var ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+
+        bool isDisposed = false;
 
 		///<Summary>
 		/// Dispose SimpleAudioPlayer and release resources
