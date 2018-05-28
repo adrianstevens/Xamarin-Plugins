@@ -58,6 +58,15 @@ player.Load(GetStreamFromFile("mysound.wav"));
 player.Play();
 ```
 
+```
+Stream GetStreamFromFile(string filename)
+{
+    var assembly = typeof(App).GetTypeInfo().Assembly;
+    var stream = assembly.GetManifestResourceStream("YourApp." + filename);
+    return stream;
+}
+```
+
 Or to load multiple instances
 ```
 var player1 = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
