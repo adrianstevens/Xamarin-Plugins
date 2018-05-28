@@ -1,5 +1,5 @@
 ### SimpleAudioPlayer
-SimpleAudioPlayer plays local files and audio data as a stream. This allows you to store audio data in a portable class library and play it on all supported platforms.
+SimpleAudioPlayer plays local files and audio data as a stream. This allows you to store audio data in a .NET Stanard Portable Class Library and play it on all supported platforms.
 
 ### Setup
 * Available on NuGet: http://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer [![NuGet](https://img.shields.io/nuget/v/Xam.Plugin.SimpleAudioPlayer.svg?label=NuGet)](https://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer/)
@@ -50,7 +50,7 @@ Call **CrossSimpleAudioPlayer.Current** from any project or PCL to gain access t
 
 
 ### Example
-Coded in the shared PCL using the Xamarin.Forms dependancy service
+Coded in a shared library (.NET Standard or PCL) using the Xamarin.Forms dependancy service
 with **mysound.wav** stored in the PCL as an **Embedded Resource**
 ```
 ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
