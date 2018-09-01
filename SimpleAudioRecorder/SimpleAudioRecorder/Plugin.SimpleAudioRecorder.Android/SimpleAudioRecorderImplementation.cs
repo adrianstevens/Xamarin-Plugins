@@ -12,6 +12,8 @@ namespace Plugin.SimpleAudioRecorder
     {
         public bool CanRecordAudio { get; private set; } = true;
 
+        public bool IsRecording => audioRecord.RecordingState == RecordState.Recording;
+
         AudioRecord audioRecord;
 
         string rawFilePath;

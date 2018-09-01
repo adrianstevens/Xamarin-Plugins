@@ -13,6 +13,8 @@ namespace Plugin.SimpleAudioRecorder
 
         public bool CanRecordAudio { get; private set; } = true;
 
+        public bool IsRecording => mediaCapture != null;
+
         string audioFilePath;
 
         public async Task RecordAsync()

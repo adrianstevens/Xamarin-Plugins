@@ -14,6 +14,8 @@ namespace Plugin.SimpleAudioRecorder
         public bool CanRecordAudio => true;
 #endif
 
+        public bool IsRecording => recorder.Recording;
+
         AVAudioRecorder recorder;
 
         public SimpleAudioRecorderImplementation()

@@ -13,6 +13,11 @@ namespace Plugin.SimpleAudioRecorder
         bool CanRecordAudio { get; }
 
         ///<Summary>
+        /// Check if the executing device is capable of recording audio
+        ///</Summary>
+        bool IsRecording { get; }
+
+        ///<Summary>
         /// Start recording 
         ///</Summary>
         Task RecordAsync();

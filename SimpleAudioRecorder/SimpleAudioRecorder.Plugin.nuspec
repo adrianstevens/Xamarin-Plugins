@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>Xam.Plugin.SimpleAudioRecorder</id>
-    <version>0.3.1-beta</version>
-    <title>SimpleAudioRecorder Plugin for Xamarin and Windows</title>
+    <version>0.4.0-beta</version>
+    <title>SimpleAudioRecorder Plugin for Xamarin, Windows and macOS</title>
     <authors>Adrian Stevens</authors>
     <owners>Adrian Stevens</owners>
-    <releaseNotes>code cleanup</releaseNotes>
+    <releaseNotes>Added is recording property</releaseNotes>
     <copyright>Copyright ©2018 Adrian Stevens</copyright>
     <licenseUrl>
       https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
