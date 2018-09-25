@@ -1,37 +1,75 @@
 using System;
 using System.IO;
-using System.Windows.Media;
+using NAudio.Wave;
 
 namespace Plugin.SimpleAudioPlayer
 {
     /// <summary>
     /// Implementation for Feature
     /// </summary>
-    public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
+    public sealed class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
     {
+        private readonly WaveOutEvent _waveOut;
+
+        private WaveFileReader _reader;
+
+        public SimpleAudioPlayerImplementation()
+        {
+            _waveOut = new WaveOutEvent();
+            _waveOut.PlaybackStopped += OnPlaybackStopped;
+        }
+
+        private void OnPlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            if (IsPlaying && Loop && CanSeek)
+            {
+                Seek(0);
+                Play();
+            }
+            else
+            {
+                PlaybackEnded?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private bool _isDisposed;
+
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose()
+        {
+            if (_isDisposed) return;
+
+            _waveOut.PlaybackStopped -= OnPlaybackStopped;
+            _waveOut.Dispose();
+
+            _reader?.Dispose();
+            _reader = null;
+
+            _isDisposed = true;
+        }
+
+        ///<Summary>
+        /// Raised when audio playback completes successfully 
+        ///</Summary>
         public event EventHandler PlaybackEnded;
-
-        private static int index;
-
-        private MediaPlayer player;
 
         ///<Summary>
         /// Length of audio in seconds
         ///</Summary>
-        public double Duration => player?.NaturalDuration.TimeSpan.TotalSeconds ?? 0;
+        public double Duration => _reader?.TotalTime.TotalSeconds ?? 0;
 
         ///<Summary>
-        /// Current position of audio in seconds
+        /// Current position of audio playback in seconds
         ///</Summary>
-        public double CurrentPosition => player?.Position.TotalSeconds ?? 0;
+        public double CurrentPosition => _reader?.CurrentTime.TotalSeconds ?? 0;
 
         ///<Summary>
-        /// Playback volume (0 to 1)
+        /// Playback volume 0 to 1 where 0 is no-sound and 1 is full volume
         ///</Summary>
         public double Volume
         {
-            get => player?.Volume ?? 0;
-            set => SetVolume(value, Balance);
+            get => _waveOut.Volume;
+            set => _waveOut.Volume = (float)Math.Min(1, Math.Max(0, value));
         }
 
         ///<Summary>
@@ -39,92 +77,47 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Balance
         {
-            get => player?.Balance ?? 0;
-            set => SetVolume(Volume, value);
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
 
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
         ///</Summary>
-        public bool IsPlaying
-        {
-            get
-            {
-                if (player == null)
-                    return false;
-                return _isPlaying;
-            }
-        }
-        private bool _isPlaying;
+        public bool IsPlaying { get; private set; }
 
         ///<Summary>
-        /// Continously repeats the currently playing sound
+        /// Continuously repeats the currently playing sound
         ///</Summary>
-        public bool Loop { get; set; }
+        public bool Loop
+        {
+            get;
+            set;
+        }
 
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
-        public bool CanSeek => player != null;
+        public bool CanSeek => _reader?.CanSeek ?? false;
 
         ///<Summary>
-        /// Load wave or mp3 audio file from a stream
+        /// Load wav audio file as a stream
         ///</Summary>
         public bool Load(Stream audioStream)
         {
-            DeletePlayer();
-
-            player = GetPlayer();
-
-            if (player != null)
-            {
-                var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), $"{++index}.wav");
-                using (var fileStream = File.OpenWrite(fileName)) audioStream.CopyTo(fileStream);
-
-                player.Open(new Uri(fileName));
-                player.MediaEnded += OnPlaybackEnded;
-            }
-
-            return player != null && player.Source != null;
+            _reader = new WaveFileReader(audioStream);
+            _waveOut.Init(_reader);
+            return true;
         }
 
         ///<Summary>
-        /// Load wave or mp3 audio file from assets folder in the UWP project
+        /// Load wav audio file from local path
         ///</Summary>
         public bool Load(string fileName)
         {
-            DeletePlayer();
-
-            player = GetPlayer();
-
-            if (player != null)
-            {
-                player.Open(new Uri("ms-appx:///Assets/" + fileName));
-                player.MediaEnded += OnPlaybackEnded;
-            }
-
-            return player != null && player.Source != null;
-        }
-
-        void DeletePlayer()
-        {
-            Stop();
-
-            if (player != null)
-            {
-                player.MediaEnded -= OnPlaybackEnded;
-                player = null;
-            }
-        }
-
-        private void OnPlaybackEnded(object sender, EventArgs args)
-        {
-            if (_isPlaying && Loop)
-            {
-                Play();
-            }
-
-            PlaybackEnded?.Invoke(sender, args);
+            _reader = new WaveFileReader(fileName);
+            _waveOut.Init(_reader);
+            return true;
         }
 
         ///<Summary>
@@ -132,17 +125,8 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Play()
         {
-            if (player == null || player.Source == null)
-                return;
-
-            if (IsPlaying)
-            {
-                Pause();
-                Seek(0);
-            }
-
-            _isPlaying = true;
-            player.Play();
+            IsPlaying = true;
+            _waveOut.Play();
         }
 
         ///<Summary>
@@ -150,64 +134,26 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Pause()
         {
-            _isPlaying = false;
-            player?.Pause();
+            IsPlaying = false;
+            _waveOut.Pause();
         }
 
         ///<Summary>
-        /// Stop playack and set the current position to the beginning
+        /// Stop playback and set the current position to the beginning
         ///</Summary>
         public void Stop()
         {
-            Pause();
-            Seek(0);
+            IsPlaying = false;
+            _waveOut.Stop();
         }
 
         ///<Summary>
-        /// Seek a position in seconds in the currently loaded sound file 
+        /// Set the current playback position (in seconds)
         ///</Summary>
         public void Seek(double position)
         {
-            if (player == null) return;
-            player.Position = TimeSpan.FromSeconds(position);
-        }
-
-        private void SetVolume(double volume, double balance)
-        {
-            if (player == null || _isDisposed) return;
-
-            player.Volume = Math.Min(1, Math.Max(0, volume));
-            player.Balance = Math.Min(1, Math.Max(-1, balance));
-        }
-
-        private static MediaPlayer GetPlayer()
-        {
-            return new MediaPlayer();
-        }
-
-        private bool _isDisposed;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_isDisposed || player == null)
-                return;
-
-            if (disposing)
-                DeletePlayer();
-
-            _isDisposed = true;
-        }
-
-        ~SimpleAudioPlayerImplementation()
-        {
-            Dispose(false);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-
-            GC.SuppressFinalize(this);
+            if (_reader == null) return;
+            _reader.CurrentTime = TimeSpan.FromSeconds(position);
         }
     }
 }

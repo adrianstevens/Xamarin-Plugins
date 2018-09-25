@@ -17111,7 +17111,7 @@
       ]
     },
     "Microsoft.NETCore.UniversalWindowsPlatform/5.2.3": {
-      "sha512": "xsOO1wxNtqhPdYoNfI96fTG9xrECOqBmqwVbarRuQinQ+sZKSI604Bi2S2cPHHAogHwbs3Lzgooi5KYffvOlpQ==",
+      "sha512": "j9TvGPvxH42R7hZ4AzhSO7WdWWbDxtw69RbM2YzV2wAOnUf8MHRv3DTRT1oV0amPW779/HLr7YJuRF6QByaOAA==",
       "type": "package",
       "path": "microsoft.netcore.universalwindowsplatform/5.2.3",
       "files": [
@@ -23404,37 +23404,39 @@
     "UAP,Version=v10.0.14393": []
   },
   "packageFolders": {
-    "C:\\Users\\adria\\.nuget\\packages\\": {}
+    "C:\\Users\\ander\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\dev\\open\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\Plugin.SimpleAudioPlayer.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\ander\\Documents\\Development\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\Plugin.SimpleAudioPlayer.UWP.csproj",
       "projectName": "Plugin.SimpleAudioPlayer.UWP",
-      "projectPath": "C:\\dev\\open\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\Plugin.SimpleAudioPlayer.UWP.csproj",
-      "projectJsonPath": "C:\\dev\\open\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\project.json",
-      "packagesPath": "C:\\Users\\adria\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\open\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\obj\\",
+      "projectPath": "C:\\Users\\ander\\Documents\\Development\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\Plugin.SimpleAudioPlayer.UWP.csproj",
+      "projectJsonPath": "C:\\Users\\ander\\Documents\\Development\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\project.json",
+      "packagesPath": "C:\\Users\\ander\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ander\\Documents\\Development\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.UWP\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\adria\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ander\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\ander\\Documents\\Development\\Local NuGet Packages": {},
+        "C:\\Users\\ander\\Documents\\Development\\mmx-tc-xamarin\\External\\Linphone\\UWP": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "uap10.0.14393": {
           "projectReferences": {
-            "C:\\dev\\open\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.Abstractions\\Plugin.SimpleAudioPlayer.Abstractions.csproj": {
-              "projectPath": "C:\\dev\\open\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.Abstractions\\Plugin.SimpleAudioPlayer.Abstractions.csproj"
+            "C:\\Users\\ander\\Documents\\Development\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.Abstractions\\Plugin.SimpleAudioPlayer.Abstractions.csproj": {
+              "projectPath": "C:\\Users\\ander\\Documents\\Development\\Xamarin-Plugins\\SimpleAudioPlayer\\SimpleAudioPlayer\\Plugin.SimpleAudioPlayer.Abstractions\\Plugin.SimpleAudioPlayer.Abstractions.csproj"
             }
           }
         }
       }
     },
     "dependencies": {
-      "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+      "Microsoft.NETCore.UniversalWindowsPlatform": "[5.2.3, )"
     },
     "frameworks": {
       "uap10.0.14393": {}

@@ -132,3 +132,6 @@ UpgradeLog*.XML
 *.userprefs
 
 1-InProgress/IOS230 - Maps and Location in iOS/Labs/Part 05 Resources/Complete/MappingIOSLab.userprefs
+
+.vs
+project.lock.json
