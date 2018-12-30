@@ -181,10 +181,8 @@ namespace Plugin.SimpleAudioPlayer
             balance = Math.Max(-1, balance);
             balance = Math.Min(1, balance);
 
-            var right = (balance < 0) ? volume * -1 * balance : volume;
-            var left = (balance > 0) ? volume * 1 * balance : volume;
-
-            player.SetVolume((float)left, (float)right);
+            player.Volume = (float)volume;
+            player.Pan = (float)balance;
         }
         void OnPlaybackEnded()
         {

@@ -218,8 +218,9 @@ namespace Plugin.SimpleAudioPlayer
             balance = Math.Max(-1, balance);
             balance = Math.Min(1, balance);
 
-            var right = (balance < 0) ? volume * -1 * balance : volume;
-            var left = (balance > 0) ? volume * 1 * balance : volume;
+            // Using the "constant power pan rule." See: http://www.rs-met.com/documents/tutorials/PanRules.pdf
+            var left = Math.Cos((Math.PI * (balance + 1)) / 4) * volume;
+            var right = Math.Sin((Math.PI * (balance + 1)) / 4) * volume;
 
             player?.SetVolume((float)left, (float)right);
         }
