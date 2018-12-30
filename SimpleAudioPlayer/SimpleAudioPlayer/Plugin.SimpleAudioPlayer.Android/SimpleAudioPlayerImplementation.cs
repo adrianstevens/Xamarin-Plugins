@@ -92,6 +92,8 @@ namespace Plugin.SimpleAudioPlayer
         {
             player.Reset();
 
+            DeleteFile(path);
+
             //cache to the file system
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
             var fileStream = File.Create(path);
@@ -151,12 +153,17 @@ namespace Plugin.SimpleAudioPlayer
                 player = null;
             }
 
+            DeleteFile(path);
+            path = string.Empty;
+        }
+
+        void DeleteFile(string path)
+        {
             if (string.IsNullOrWhiteSpace(path) == false)
             {
                 try
                 {
                     File.Delete(path);
-                    path = string.Empty;
                 }
                 catch
                 {
