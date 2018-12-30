@@ -14,7 +14,7 @@ namespace SAPlayerSample
         {
             InitializeComponent();
 
-            btnPCL.Clicked += (s, e) => Navigation.PushAsync(new PCLAudioPage());
+            btnLibrary.Clicked += (s, e) => Navigation.PushAsync(new LibraryAudioPage());
             btnLocal.Clicked += (s, e) => Navigation.PushAsync(new HeadProjectAudioPage());
         }
     }

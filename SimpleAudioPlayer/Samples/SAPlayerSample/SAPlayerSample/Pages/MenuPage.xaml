@@ -4,7 +4,7 @@
              x:Class="SAPlayerSample.MenuPage"
              Title="SimpleAudioPlayer Sample">
   <StackLayout Orientation="Vertical">
-    <Button x:Name="btnPCL" Text="PCL audio demo" />
+    <Button x:Name="btnLibrary" Text="Shared library audio demo" />
     <Button x:Name="btnLocal" Text="Head-project audio demo" />
   </StackLayout>
 </ContentPage>
