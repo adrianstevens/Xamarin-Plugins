@@ -99,7 +99,7 @@ namespace Plugin.SimpleAudioPlayer
 
             if (player != null)
             {
-                player.Open(new Uri("ms-appx:///Assets/" + fileName));
+                player.Open(new Uri(@"Assets\" + fileName, UriKind.Relative));
                 player.MediaEnded += OnPlaybackEnded;
             }
 
