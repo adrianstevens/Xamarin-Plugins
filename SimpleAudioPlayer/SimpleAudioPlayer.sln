@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74421D2E-DC0A-40BB-8474-C792CA27CA24}"
 	ProjectSection(SolutionItems) = preProject
 		SimpleAudioPlayer.Plugin.nuspec = SimpleAudioPlayer.Plugin.nuspec
+		SimpleAudioPlayer.Plugin.WPF.nuspec = SimpleAudioPlayer.Plugin.WPF.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.macOS", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.macOS\Plugin.SimpleAudioPlayer.macOS.csproj", "{C0F794B7-44E4-45FB-8ED4-A9BC74941F6B}"
