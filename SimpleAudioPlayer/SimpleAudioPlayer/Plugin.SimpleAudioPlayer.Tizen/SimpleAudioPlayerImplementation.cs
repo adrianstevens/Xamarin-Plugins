@@ -86,13 +86,14 @@ namespace Plugin.SimpleAudioPlayer
 			try
 			{
 				DeletePlayer();
-				if (player == null)
-					player = new Player();
+
+    			player = new Player();
 				
 				if (player != null)
 				{
 					if (player.State != PlayerState.Idle)
 						player.Unprepare();
+
 					player.SetSource(new MediaBufferSource(ReadBuffer(audioStream), (int)audioStream.Length));
 					PreparePlayer();
 				}
@@ -101,7 +102,7 @@ namespace Plugin.SimpleAudioPlayer
 			{
 				throw new Exception(ex.Message);
 			}
-			return (player == null) ? false : true;
+			return (player != null);
 		}
 
 		///<Summary>
@@ -112,8 +113,8 @@ namespace Plugin.SimpleAudioPlayer
 			try
 			{
 				DeletePlayer();
-				if (player == null)
-					player = new Player();
+
+				player = new Player();
 
 				if (player != null)
 				{
@@ -121,8 +122,10 @@ namespace Plugin.SimpleAudioPlayer
 					{
 						player.Unprepare();
 					}
-					string audioPath = Path.Combine(Application.Current.DirectoryInfo.Resource, fileName);
-					player.SetSource(new MediaUriSource(audioPath));
+
+                    var audioPath = Path.Combine(Application.Current.DirectoryInfo.Resource, fileName);
+
+                    player.SetSource(new MediaUriSource(audioPath));
 					PreparePlayer();
 				}
 			}
@@ -130,7 +133,8 @@ namespace Plugin.SimpleAudioPlayer
 			{
 				throw new Exception(ex.Message);
 			}
-			return (player == null) ? false : true;
+
+			return (player != null);
 		}
 
 		async void PreparePlayer()
