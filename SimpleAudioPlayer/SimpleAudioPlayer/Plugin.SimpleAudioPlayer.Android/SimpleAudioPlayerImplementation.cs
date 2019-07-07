@@ -179,10 +179,10 @@ namespace Plugin.SimpleAudioPlayer
             if (player == null)
                 return;
 
-            if (player.IsPlaying)
+            if (IsPlaying)
             {
-                player.Pause();
-                player.SeekTo(0);
+                Pause();
+                Seek(0);
             }
 
             player.Start();
@@ -193,8 +193,11 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Stop()
         {
-            player?.Pause();
-            player?.SeekTo(0);
+	    if(!IsPlaying)
+	    	return;
+		
+            Pause();
+            Seek(0);
         }
 
         ///<Summary>
@@ -210,7 +213,8 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Seek(double position)
         {
-            player?.SeekTo((int)position*1000);
+	    if(CanSeek)
+            	player?.SeekTo((int)position*1000);
         }
 
         ///<Summary>
