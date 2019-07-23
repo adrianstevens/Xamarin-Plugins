@@ -2,22 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>Xam.Plugin.SimpleAudioPlayer.WPF</id>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
     <title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
     <authors>Adrian Stevens</authors>
     <owners>Adrian Stevens</owners>
-    <releaseNotes>Added WPF support + bug fixes</releaseNotes>
+    <releaseNotes>Bug fixes</releaseNotes>
     <copyright>Copyright ©2017-2019 Adrian Stevens</copyright>
-    <license type="expression">MIT</license>
     <projectUrl>https://github.com/adrianstevens/Xamarin-Plugins</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/adrianstevens/Xamarin-Plugins/master/SimpleAudioPlayer/icon_128.png</iconUrl>
+    <license type="expression">MIT</license>
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       A light-weight and easy to use cross-platform audio player for Windows UWP/WPF, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.tvOS, Tizen and Xamarin.Forms Load wav and mp3 files from any location including a shared library. Works well for sound effects or music. Multiple instances can be instantiated to play multiple sources simultaniously.
     </description>
-    <summary>Cross-platform audio player for Xamarin and Windows UWP</summary>
-    <tags>audio, sound, music, wav, wave, mp3, xamarin, .net, standard, pcl, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
+    <summary>Cross-platform audio player for Xamarin, WPF, and Windows UWP</summary>
+    <tags>audio, sound, music, wav, wave, mp3, xamarin, .net, standard, portable, shared, plugin, plugin for xamarin, windows, uwp, uap, wpf, xamarin.android, android, xamarin.forms, forms, xamarin.ios, ios, macos, xamarin.mac, xamarin.tvos</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.5">
       </group>
