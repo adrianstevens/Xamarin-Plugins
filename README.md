@@ -4,9 +4,11 @@ The home for cross-platform Windows and Xamarin plugins written by me (Adrian St
 
 *SimpleAudioPlayer* is stable and published as a nuget package on nuget.org: https://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer/
 
-*SimpleAudioRecorder* is in beta and is published on nuget.org: https://www.nuget.org/packages/Xam.Plugin.SimpleAudioRecorder/0.3.0-beta
+*SimpleAudioRecorder* is in beta and is published on nuget.org: https://www.nuget.org/packages/Xam.Plugin.SimpleAudioRecorder/
 
-*SpeechToText* is in beta and is avaliable on nuget.org: https://www.nuget.org/packages/Plugin.SpeechToText/0.1.0-beta
+*SpeechToText* has been depricated but the code is available for reference
+
+
 
 ## Contributions
 Contributions are welcome! If you find a bug want a feature added please report it.
