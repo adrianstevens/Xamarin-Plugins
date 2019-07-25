@@ -2,17 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>Xam.Plugin.SimpleAudioRecorder</id>
-    <version>0.4.0-beta</version>
+    <version>0.9.0</version>
     <title>SimpleAudioRecorder Plugin for Xamarin, Windows and macOS</title>
     <authors>Adrian Stevens</authors>
     <owners>Adrian Stevens</owners>
-    <releaseNotes>Added is recording property</releaseNotes>
-    <copyright>Copyright ©2018 Adrian Stevens</copyright>
-    <licenseUrl>
-      https://github.com/adrianstevens/Xamarin-Plugins/blob/master/License.txt
-    </licenseUrl>
+    <releaseNotes>Bug fixes</releaseNotes>
+    <copyright>Copyright ©2018-2019 Adrian Stevens</copyright>
     <projectUrl>https://github.com/adrianstevens/Xamarin-Plugins</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/adrianstevens/Xamarin-Plugins/master/SimpleAudioRecorder/icon_128.png</iconUrl>
+    <license type="expression">MIT</license>
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
@@ -32,17 +30,7 @@
       </group>
       <group targetFramework="uap">
       </group>
-      <!--
-      <group targetFramework="portable-net45+win+wpa81+wp80">
-      </group>
-      <group targetFramework="dotnet">
-      </group>
-      <group targetFramework="xamarintvos">
-      </group>
-      <group targetFramework="xamarinwatchos">
-      </group>
-      <group targetFramework="tizen">
-      </group> -->
+
     </dependencies>
   </metadata>
   <files>
@@ -60,12 +48,6 @@
     
     <!--Xamarin.Mac-->
     <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.macOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarin.Mac20" />
-
-    <!--Xamarin.tvOS
-    <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.tvOS\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\Xamarintvos" /> -->
-    
-    <!--Tizen
-    <file src="SimpleAudioRecorder\Plugin.SimpleAudioRecorder.Tizen\bin\Release\Plugin.SimpleAudioRecorder.*" target="lib\tizen4" /> -->
 
   </files>
 </package>
