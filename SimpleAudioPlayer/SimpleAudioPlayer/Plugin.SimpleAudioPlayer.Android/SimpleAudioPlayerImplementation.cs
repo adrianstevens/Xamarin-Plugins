@@ -214,7 +214,7 @@ namespace Plugin.SimpleAudioPlayer
         public void Seek(double position)
         {
 	    if(CanSeek)
-            	player?.SeekTo((int)position*1000);
+            	player?.SeekTo((int)(position * 1000D));
         }
 
         ///<Summary>
