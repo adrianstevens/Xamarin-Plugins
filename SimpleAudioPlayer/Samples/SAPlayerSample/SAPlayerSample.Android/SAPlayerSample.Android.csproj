@@ -15,8 +15,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -40,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <MandroidExtraArgs></MandroidExtraArgs>
+    <AndroidLinkMode></AndroidLinkMode>
+    <AndroidPackageFormat></AndroidPackageFormat>
+    <EmbedAssembliesIntoApk></EmbedAssembliesIntoApk>
+    <MandroidExtraArgs></MandroidExtraArgs>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -57,7 +62,8 @@
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter" Version="1.2.4" />
+    <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.7" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -96,7 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SAPlayerSample\SAPlayerSample.csproj">
-      <Project>{EFC2823B-16E7-4F52-8B8D-D02A10895FC8}</Project>
+      <Project>{1CB0EB31-4428-495B-A2BB-78C7A3730D50}</Project>
       <Name>SAPlayerSample</Name>
     </ProjectReference>
   </ItemGroup>
