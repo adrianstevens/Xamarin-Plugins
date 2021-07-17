@@ -60,7 +60,7 @@
     <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.tvOS\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\Xamarintvos" />
     
     <!--Tizen-->
-    <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\tizen4" />
+    <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\bin\Release\tizen40\Plugin.SimpleAudioPlayer.*" target="lib\tizen4" />
 
     <!--WPF (.NET Framework 4.5)-->
     <file src="SimpleAudioPlayer\Plugin.SimpleAudioPlayer.WPF\bin\Release\Plugin.SimpleAudioPlayer.*" target="lib\net45" />
