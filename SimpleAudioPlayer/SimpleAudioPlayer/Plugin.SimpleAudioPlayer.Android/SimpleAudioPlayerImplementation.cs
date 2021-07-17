@@ -241,7 +241,8 @@ namespace Plugin.SimpleAudioPlayer
             PlaybackEnded?.Invoke(sender, e);
 
             //this improves stability on older devices but has minor performance impact
-            if (Android.OS.Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.M)
+            // We need to check whether the player is null or not as the user might have dipsosed it in an event handler to PlaybackEnded above.
+            if (player != null && Android.OS.Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.M)
             {
                 player.SeekTo(0);
                 player.Stop();
