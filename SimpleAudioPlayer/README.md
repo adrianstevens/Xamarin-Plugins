@@ -74,6 +74,18 @@ var player2 = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioP
 ...
 ```
 
+### Background Audio on iOS 
+Add the following to the FinishedLaunching method of the AppDelegate class. Seems to be working fine now. Remember to Enable background audio within info.plist!
+
+    private void EnableBackgroundAudio()
+    {
+        var currentSession = AVAudioSession.SharedInstance();
+        currentSession.SetCategory(AVAudioSessionCategory.Playback,
+        AVAudioSessionCategoryOptions.MixWithOthers);
+        currentSession.SetActive(true);
+    }
+
+
 For more examples see the **Samples** folder or check out
 https://github.com/adrianstevens/Xamarin-Forms/tree/master/DrumPad2
 
