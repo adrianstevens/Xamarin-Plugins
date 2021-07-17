@@ -83,11 +83,11 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.7143.25584, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.3.1\lib\Xamarintvos\Plugin.SimpleAudioPlayer.dll</HintPath>
+    <Reference Include="Plugin.SimpleAudioPlayer, Version=1.0.7308.22067, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.4.0\lib\Xamarintvos\Plugin.SimpleAudioPlayer.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.SimpleAudioPlayer.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.3.1\lib\Xamarintvos\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.SimpleAudioPlayer.1.4.0\lib\Xamarintvos\Plugin.SimpleAudioPlayer.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
