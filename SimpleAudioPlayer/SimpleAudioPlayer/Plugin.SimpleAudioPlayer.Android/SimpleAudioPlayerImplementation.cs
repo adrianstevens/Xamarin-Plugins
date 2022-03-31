@@ -242,12 +242,13 @@ namespace Plugin.SimpleAudioPlayer
 
             //this improves stability on older devices but has minor performance impact
             // We need to check whether the player is null or not as the user might have dipsosed it in an event handler to PlaybackEnded above.
-            if (player != null && Android.OS.Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.M)
+	    //安卓5.1 运行一下代码经常崩溃,建议此代码由出现问题的用户自行添加
+            /*if (player != null && Android.OS.Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.M)
             {
                 player.SeekTo(0);
                 player.Stop();
                 player.Prepare();
-            }
+            }*/
         }
 
         bool isDisposed = false;
