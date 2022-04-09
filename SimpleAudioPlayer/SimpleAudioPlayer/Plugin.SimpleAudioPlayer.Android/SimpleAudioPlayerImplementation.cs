@@ -1,4 +1,4 @@
-using Android.Content.Res;
+﻿using Android.Content.Res;
 using System;
 using System.IO;
 using Uri = Android.Net.Uri;
@@ -193,11 +193,12 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Stop()
         {
-	    if(!IsPlaying)
-	    	return;
+	        if(!IsPlaying)
+	    	    return;
 		
             Pause();
             Seek(0);
+            PlaybackEnded?.Invoke(this, EventArgs.Empty);
         }
 
         ///<Summary>

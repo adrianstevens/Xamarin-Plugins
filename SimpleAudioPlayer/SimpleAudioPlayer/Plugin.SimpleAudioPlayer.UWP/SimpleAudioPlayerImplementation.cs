@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using Windows.Media.Core;
 using Windows.Media.Playback;
@@ -168,6 +168,7 @@ namespace Plugin.SimpleAudioPlayer
             {
                 Pause();
                 Seek(0);
+                PlaybackEnded?.Invoke(this, EventArgs.Empty);
             }
         }
 

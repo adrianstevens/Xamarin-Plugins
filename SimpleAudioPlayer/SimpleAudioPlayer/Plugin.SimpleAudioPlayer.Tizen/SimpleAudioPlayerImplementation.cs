@@ -178,6 +178,7 @@ namespace Plugin.SimpleAudioPlayer
 					{
 						player.Stop();
 						await SeekToAsync((int)CurrentPosition);
+						PlaybackEnded?.Invoke(this, EventArgs.Empty);
 					}
 				}
 				else
