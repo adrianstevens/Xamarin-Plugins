@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.5.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>Xam.Plugin.SimpleAudioPlayer.WPF</id>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
     <title>SimpleAudioPlayer Plugin for Xamarin and Windows</title>
     <authors>Adrian Stevens</authors>
     <owners>Adrian Stevens</owners>
     <releaseNotes>Added WPF support + bug fixes</releaseNotes>
-    <copyright>Copyright ©2017-2021 Adrian Stevens</copyright>
+    <copyright>Copyright ©2017-2022 Adrian Stevens</copyright>
     <projectUrl>https://github.com/adrianstevens/Xamarin-Plugins</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/adrianstevens/Xamarin-Plugins/master/SimpleAudioPlayer/icon_128.png</iconUrl>
     <license type="expression">MIT</license>
