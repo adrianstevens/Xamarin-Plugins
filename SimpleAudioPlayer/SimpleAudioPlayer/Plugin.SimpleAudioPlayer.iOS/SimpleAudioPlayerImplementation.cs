@@ -1,4 +1,4 @@
-using AVFoundation;
+﻿using AVFoundation;
 using Foundation;
 using System;
 using System.IO;
@@ -158,6 +158,7 @@ namespace Plugin.SimpleAudioPlayer
         {
             player?.Stop();
             Seek(0);
+            PlaybackEnded?.Invoke(this, EventArgs.Empty);
         }
 
         ///<Summary>
