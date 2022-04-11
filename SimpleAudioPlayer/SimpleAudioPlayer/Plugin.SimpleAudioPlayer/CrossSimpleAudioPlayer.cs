@@ -10,7 +10,7 @@ namespace Plugin.SimpleAudioPlayer
 #endif
     public class CrossSimpleAudioPlayer
    {
-      static Lazy<ISimpleAudioPlayer> Implementation = new Lazy<ISimpleAudioPlayer>(() => CreateSimpleAudioPlayer(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+      static readonly Lazy<ISimpleAudioPlayer> Implementation = new Lazy<ISimpleAudioPlayer>(() => CreateSimpleAudioPlayer(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
       /// <summary>
       /// Current settings to use

@@ -20,21 +20,19 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Length of audio in seconds
         ///</Summary>
-        public double Duration
-        { get { return player == null ? 0 : player.Duration; } }
+        public double Duration => player == null ? 0 : player.Duration;
 
         ///<Summary>
         /// Current position of audio in seconds
         ///</Summary>
-        public double CurrentPosition
-        { get { return player == null ? 0 : player.CurrentTime; } }
+        public double CurrentPosition => player == null ? 0 : player.CurrentTime;
 
         ///<Summary>
         /// Playback volume (0 to 1)
         ///</Summary>
         public double Volume
         {
-            get { return player == null ? 0 : player.Volume; }
+            get => player == null ? 0 : player.Volume;
             set { SetVolume(value, Balance); }
         }
 
@@ -43,7 +41,7 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Balance
         {
-            get { return _balance; }
+            get => _balance;
             set { SetVolume(Volume, _balance = value); }
         }
         double _balance = 0;
@@ -51,15 +49,14 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
         ///</Summary>
-        public bool IsPlaying
-        { get { return player == null ? false : player.Playing; } }
+        public bool IsPlaying => player != null && player.Playing;
 
         ///<Summary>
         /// Continously repeats the currently playing sound
         ///</Summary>
         public bool Loop
         {
-            get { return _loop; }
+            get => _loop;
             set
             {
                 _loop = value;
@@ -72,8 +69,7 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated - always returns true on iOS
         ///</Summary>
-        public bool CanSeek
-        { get { return player == null ? false : true; } }
+        public bool CanSeek => player != null;
 
         ///<Summary>
         /// Load wave or mp3 audio file as a stream
@@ -109,7 +105,7 @@ namespace Plugin.SimpleAudioPlayer
                 player.PrepareToPlay();
             }
 
-            return (player == null) ? false : true;
+            return player != null;
         }
 
         void DeletePlayer()
@@ -184,10 +180,6 @@ namespace Plugin.SimpleAudioPlayer
 
             player.Volume = (float)volume;
             player.Pan = (float)balance;
-        }
-        void OnPlaybackEnded()
-        {
-            PlaybackEnded?.Invoke(this, EventArgs.Empty);
         }
 
         bool isDisposed = false;

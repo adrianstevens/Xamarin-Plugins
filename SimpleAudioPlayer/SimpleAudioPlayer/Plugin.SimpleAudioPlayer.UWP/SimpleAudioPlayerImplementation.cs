@@ -17,14 +17,12 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Length of audio in seconds
         ///</Summary>
-        public double Duration
-        { get { return player == null ? 0 : player.PlaybackSession.NaturalDuration.TotalSeconds; } }
+        public double Duration => player == null ? 0 : player.PlaybackSession.NaturalDuration.TotalSeconds;
 
         ///<Summary>
         /// Current position of audio in seconds
         ///</Summary>
-        public double CurrentPosition
-        { get { return player == null ? 0 : player.PlaybackSession.Position.TotalSeconds; } }
+        public double CurrentPosition => player == null ? 0 : player.PlaybackSession.Position.TotalSeconds;
 
         ///<Summary>
         /// Playback volume (0 to 1)
@@ -75,8 +73,7 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
-        public bool CanSeek
-        { get { return player == null ? false : player.PlaybackSession.CanSeek; } }
+        public bool CanSeek => player != null && player.PlaybackSession.CanSeek;
 
         ///<Summary>
         /// Load wave or mp3 audio file from a stream
@@ -93,7 +90,7 @@ namespace Plugin.SimpleAudioPlayer
                 player.MediaEnded += OnPlaybackEnded;
             }
 
-            return (player == null || player.Source == null) ? false : true;
+            return player != null && player.Source != null;
         }
         
         ///<Summary>

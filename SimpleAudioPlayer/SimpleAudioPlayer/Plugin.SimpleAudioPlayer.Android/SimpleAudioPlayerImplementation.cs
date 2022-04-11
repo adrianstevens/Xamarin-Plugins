@@ -23,22 +23,23 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Length of audio in seconds
         ///</Summary>
-        public double Duration
-        { get { return player == null ? 0 : ((double)player.Duration) / 1000.0; } }
+        public double Duration => player == null ? 0 : player.Duration / 1000.0; 
 
         ///<Summary>
         /// Current position of audio playback in seconds
         ///</Summary>
-        public double CurrentPosition
-        { get { return player == null ? 0 : ((double)player.CurrentPosition) / 1000.0; } }
+        public double CurrentPosition => player == null ? 0 : (player.CurrentPosition) / 1000.0; 
 
         ///<Summary>
         /// Playback volume (0 to 1)
         ///</Summary>
         public double Volume
         {
-            get { return _volume; }
-            set { SetVolume(_volume = value, Balance); }
+            get =>_volume; 
+            set 
+            {
+                SetVolume(_volume = value, Balance); 
+            }
         }
         double _volume = 0.5;
 
@@ -47,23 +48,25 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Balance
         {
-            get { return _balance; }
-            set { SetVolume(Volume, _balance = value); }
+            get => _balance;
+            set 
+            { 
+                SetVolume(Volume, _balance = value); 
+            }
         }
         double _balance = 0;
 
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
         ///</Summary>
-        public bool IsPlaying
-        { get { return player == null ? false : player.IsPlaying; } }
+        public bool IsPlaying => player != null && player.IsPlaying; 
 
         ///<Summary>
         /// Continously repeats the currently playing sound
         ///</Summary>
         public bool Loop
         {
-            get { return _loop; }
+            get => _loop; 
             set { _loop = value;  if (player != null) player.Looping = _loop; }
         }
         bool _loop;
@@ -71,8 +74,7 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
-        public bool CanSeek
-        { get { return player == null ? false : true; } }
+        public bool CanSeek => player != null;
 
         string path;
 
@@ -138,7 +140,7 @@ namespace Plugin.SimpleAudioPlayer
         {
             player?.Prepare();
 
-            return (player == null) ? false : true;
+            return player != null;
         }
 
         void DeletePlayer()
