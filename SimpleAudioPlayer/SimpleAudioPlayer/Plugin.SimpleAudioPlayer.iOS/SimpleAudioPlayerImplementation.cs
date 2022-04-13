@@ -33,7 +33,7 @@ namespace Plugin.SimpleAudioPlayer
         public double Volume
         {
             get => player == null ? 0 : player.Volume;
-            set { SetVolume(value, Balance); }
+            set => SetVolume(value, Balance);
         }
 
         ///<Summary>
@@ -42,7 +42,7 @@ namespace Plugin.SimpleAudioPlayer
         public double Balance
         {
             get => _balance;
-            set { SetVolume(Volume, _balance = value); }
+            set => SetVolume(Volume, _balance = value);
         }
         double _balance = 0;
 
@@ -61,7 +61,9 @@ namespace Plugin.SimpleAudioPlayer
             {
                 _loop = value;
                 if (player != null)
+                {
                     player.NumberOfLoops = _loop ? -1 : 0;
+                }
             }
         }
         bool _loop;

@@ -66,8 +66,10 @@ namespace Plugin.SimpleAudioPlayer
 			{
 				_loop = value;
 				if (player != null)
-					player.IsLooping = _loop;
-			}
+                {
+                    player.IsLooping = _loop;
+                }
+            }
 		}
 		bool _loop;
 
@@ -291,7 +293,7 @@ namespace Plugin.SimpleAudioPlayer
 			//balance = Math.Min(1, balance);
 
 			player.Volume = (float)volume;
-		}
+        }
 
 		void DeletePlayer()
 		{
@@ -345,13 +347,17 @@ namespace Plugin.SimpleAudioPlayer
 		///</Summary>
 		protected virtual void Dispose(bool disposing)
 		{
-			if (isDisposed)
-				return;
+            if (isDisposed)
+            {
+                return;
+            }
 
-			if (disposing)
-				DeletePlayer();
+            if (disposing)
+            {
+                DeletePlayer();
+            }
 
-			isDisposed = true;
+            isDisposed = true;
 		}
 
 		~SimpleAudioPlayerImplementation()

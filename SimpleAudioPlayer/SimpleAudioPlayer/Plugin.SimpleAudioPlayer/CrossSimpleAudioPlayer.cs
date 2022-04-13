@@ -9,7 +9,7 @@ namespace Plugin.SimpleAudioPlayer
     [Android.Runtime.Preserve(AllMembers = true)]
 #endif
     public class CrossSimpleAudioPlayer
-   {
+    {
       static readonly Lazy<ISimpleAudioPlayer> Implementation = new Lazy<ISimpleAudioPlayer>(() => CreateSimpleAudioPlayer(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
       /// <summary>

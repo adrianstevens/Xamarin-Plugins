@@ -21,8 +21,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Plugin.SimpleAudioPlayer.Abstractions\Plugin.SimpleAudioPlayer.Abstractions.csproj">
-			<Project>{14e29812-5191-4afb-ba0c-01f289485951}</Project>
-			<Name>Plugin.SimpleAudioPlayer.Abstractions</Name>
 		</ProjectReference>
 	</ItemGroup>
 
