@@ -91,7 +91,7 @@ https://github.com/adrianstevens/Xamarin-Forms/tree/master/DrumPad2
 
 
 #### Contributions
-Contributions are welcome! If you find a bug want a feature added please report it.
+Contributions are welcome! If you find a bug or want a feature added please report it - and don't forget to include your device make, model and OS version.
 
 If you want to contribute code please file an issue, create a branch, and file a pull request.
 
