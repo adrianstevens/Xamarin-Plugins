@@ -149,14 +149,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer">
-      <Version>1.5.0</Version>
+      <Version>1.6.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\SAPlayerSample\SAPlayerSample.csproj">
-      <Project>{EFC2823B-16E7-4F52-8B8D-D02A10895FC8}</Project>
+      <Project>{1CB0EB31-4428-495B-A2BB-78C7A3730D50}</Project>
       <Name>SAPlayerSample</Name>
     </ProjectReference>
   </ItemGroup>
