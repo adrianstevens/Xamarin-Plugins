@@ -1,7 +1,6 @@
 ﻿using Android.Content.Res;
 using System;
 using System.IO;
-using static Android.Widget.GridLayout;
 using Uri = Android.Net.Uri;
 
 namespace Plugin.SimpleAudioPlayer
@@ -223,7 +222,8 @@ namespace Plugin.SimpleAudioPlayer
 
         public void SetSpeed(double speed)
         {
-            player.PlaybackParams = new Android.Media.PlaybackParams().SetSpeed((float)speed);
+            if (player.Metrics != null)
+                player.PlaybackParams = new Android.Media.PlaybackParams().SetSpeed((float)speed);
         }
 
         ///<Summary>
