@@ -223,7 +223,7 @@ namespace Plugin.SimpleAudioPlayer
 
         public void SetSpeed(double speed)
         {
-            player?.PlaybackParams.SetSpeed((float)speed);
+            player.PlaybackParams = new Android.Media.PlaybackParams().SetSpeed((float)speed);
         }
 
         ///<Summary>
