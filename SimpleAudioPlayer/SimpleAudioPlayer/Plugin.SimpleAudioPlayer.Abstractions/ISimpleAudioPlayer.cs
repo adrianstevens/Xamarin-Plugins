@@ -69,7 +69,7 @@ namespace Plugin.SimpleAudioPlayer
         void Pause();
 
         ///<Summary>
-        /// Stop playack and set the current position to the beginning
+        /// Stop playback and set the current position to the beginning
         ///</Summary>
         void Stop();
 
@@ -77,5 +77,10 @@ namespace Plugin.SimpleAudioPlayer
         /// Set the current playback position (in seconds)
         ///</Summary>
         void Seek(double position);
+        /// <summary>
+        /// Set the current speed of playback
+        /// </summary>
+        /// <param name="position"></param>
+        void SetSpeed(double speed);
     }
 }

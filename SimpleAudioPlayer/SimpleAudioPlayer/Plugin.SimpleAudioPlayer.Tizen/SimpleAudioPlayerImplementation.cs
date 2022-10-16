@@ -226,10 +226,15 @@ namespace Plugin.SimpleAudioPlayer
 			}
 		}
 
-		///<Summary>
-		/// Set the current playback position (in seconds)
-		///</Summary>
-		public void Seek(double position)
+        public void SetSpeed(double speed)
+        {
+			player.SetPlaybackRate((float)speed);
+        }
+
+        ///<Summary>
+        /// Set the current playback position (in seconds)
+        ///</Summary>
+        public void Seek(double position)
 		{
 			throw new PlatformNotSupportedException();
 		}

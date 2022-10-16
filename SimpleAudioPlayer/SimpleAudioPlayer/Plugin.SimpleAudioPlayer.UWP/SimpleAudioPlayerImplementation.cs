@@ -5,11 +5,11 @@ using Windows.Media.Playback;
 
 namespace Plugin.SimpleAudioPlayer
 {
-  /// <summary>
-  /// Implementation for Feature
-  /// </summary>
-  public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
-  {
+    /// <summary>
+    /// Implementation for Feature
+    /// </summary>
+    public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
+    {
         public event EventHandler PlaybackEnded;
 
         MediaPlayer player;
@@ -92,7 +92,7 @@ namespace Plugin.SimpleAudioPlayer
 
             return player != null && player.Source != null;
         }
-        
+
         ///<Summary>
         /// Load wave or mp3 audio file from assets folder in the UWP project
         ///</Summary>
@@ -115,7 +115,7 @@ namespace Plugin.SimpleAudioPlayer
         {
             Stop();
 
-            if(player != null)
+            if (player != null)
             {
                 player.MediaEnded -= OnPlaybackEnded;
                 player.Dispose();
@@ -172,7 +172,7 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Seek a position in seconds in the currently loaded sound file 
         ///</Summary>
-        public void Seek (double position)
+        public void Seek(double position)
         {
             if (player == null || player.PlaybackSession == null)
                 return;
@@ -189,7 +189,13 @@ namespace Plugin.SimpleAudioPlayer
             player.AudioBalance = Math.Min(1, Math.Max(-1, balance));
         }
 
-        MediaPlayer GetPlayer ()
+        public void SetSpeed(double speed)
+        {
+            if (player != null)
+                player.PlaybackSession.PlaybackRate = speed;
+        }
+
+        MediaPlayer GetPlayer()
         {
             return new MediaPlayer() { AutoPlay = false, IsLoopingEnabled = _loop };
         }

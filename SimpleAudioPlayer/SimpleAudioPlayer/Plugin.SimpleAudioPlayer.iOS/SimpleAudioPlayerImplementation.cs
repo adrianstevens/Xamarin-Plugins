@@ -169,6 +169,11 @@ namespace Plugin.SimpleAudioPlayer
             player.CurrentTime = position;
         }
 
+        public void SetSpeed(double speed)
+        {
+            player.Rate = (float)speed;
+        }
+
         void SetVolume(double volume, double balance)
         {
             if (player == null)

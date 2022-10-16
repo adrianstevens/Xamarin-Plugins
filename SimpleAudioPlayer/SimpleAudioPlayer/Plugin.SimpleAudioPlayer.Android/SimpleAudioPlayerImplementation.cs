@@ -23,22 +23,22 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Length of audio in seconds
         ///</Summary>
-        public double Duration => player == null ? 0 : player.Duration / 1000.0; 
+        public double Duration => player == null ? 0 : player.Duration / 1000.0;
 
         ///<Summary>
         /// Current position of audio playback in seconds
         ///</Summary>
-        public double CurrentPosition => player == null ? 0 : (player.CurrentPosition) / 1000.0; 
+        public double CurrentPosition => player == null ? 0 : (player.CurrentPosition) / 1000.0;
 
         ///<Summary>
         /// Playback volume (0 to 1)
         ///</Summary>
         public double Volume
         {
-            get =>_volume; 
-            set 
+            get => _volume;
+            set
             {
-                SetVolume(_volume = value, Balance); 
+                SetVolume(_volume = value, Balance);
             }
         }
         double _volume = 0.5;
@@ -49,9 +49,9 @@ namespace Plugin.SimpleAudioPlayer
         public double Balance
         {
             get => _balance;
-            set 
-            { 
-                SetVolume(Volume, _balance = value); 
+            set
+            {
+                SetVolume(Volume, _balance = value);
             }
         }
         double _balance = 0;
@@ -59,15 +59,15 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the currently loaded audio file is playing
         ///</Summary>
-        public bool IsPlaying => player != null && player.IsPlaying; 
+        public bool IsPlaying => player != null && player.IsPlaying;
 
         ///<Summary>
         /// Continously repeats the currently playing sound
         ///</Summary>
         public bool Loop
         {
-            get => _loop; 
-            set { _loop = value;  if (player != null) player.Looping = _loop; }
+            get => _loop;
+            set { _loop = value; if (player != null) player.Looping = _loop; }
         }
         bool _loop;
 
@@ -195,9 +195,9 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Stop()
         {
-	        if(!IsPlaying)
-	    	    return;
-		
+            if (!IsPlaying)
+                return;
+
             Pause();
             Seek(0);
             PlaybackEnded?.Invoke(this, EventArgs.Empty);
@@ -216,8 +216,14 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Seek(double position)
         {
-	    if(CanSeek)
-            	player?.SeekTo((int)(position * 1000D));
+            if (CanSeek)
+                player?.SeekTo((int)(position * 1000D));
+        }
+
+        public void SetSpeed(double speed)
+        {
+            if (player.Metrics != null)
+                player.PlaybackParams = new Android.Media.PlaybackParams().SetSpeed((float)speed);
         }
 
         ///<Summary>
@@ -274,10 +280,10 @@ namespace Plugin.SimpleAudioPlayer
             Dispose(false);
         }
 
-		///<Summary>
-		/// Dispose SimpleAudioPlayer and release resources
-		///</Summary>
-		public void Dispose()
+        ///<Summary>
+        /// Dispose SimpleAudioPlayer and release resources
+        ///</Summary>
+        public void Dispose()
         {
             Dispose(true);
 
