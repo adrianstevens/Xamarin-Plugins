@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Plugin.Permissions" Version="2.2.1" />
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.0.2" />
     <PackageReference Include="Xam.Plugin.SimpleAudioRecorder" Version="0.0.2.2-alpha" />
