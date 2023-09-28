@@ -191,7 +191,7 @@ namespace Plugin.SimpleAudioPlayer
         }
 
         ///<Summary>
-        /// Stop playack and set the current position to the beginning
+        /// Stop playback and set the current position to the beginning
         ///</Summary>
         public void Stop()
         {
