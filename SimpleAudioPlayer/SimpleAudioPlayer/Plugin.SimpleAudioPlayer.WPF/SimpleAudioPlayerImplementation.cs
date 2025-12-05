@@ -210,5 +210,10 @@ namespace Plugin.SimpleAudioPlayer
 
             GC.SuppressFinalize(this);
         }
+
+        public void SetSpeed(double speed)
+        {
+            player.SpeedRatio = speed;
+        }
     }
 }
