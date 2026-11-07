@@ -1,15 +1,17 @@
 # .NET C# Plugins
 
-The home for cross-platform Windows and Xamarin plugins written by me (Adrian Stevens) along with amazing contributions from the community. 
+> **This repo is archived.** Xamarin reached end of support in May 2024, so these plugins are no longer maintained.
+>
+> **Using .NET MAUI?** Use [Plugin.Maui.Audio](https://github.com/jfversluis/Plugin.Maui.Audio) by Gerald Versluis. It started from SimpleAudioPlayer and has grown well beyond it.
 
-*SimpleAudioPlayer* is stable and published as a nuget package on nuget.org: https://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer/
+Cross-platform audio and speech plugins for Xamarin and Windows, written by me (Adrian Stevens) with great contributions from the community.
 
-*SimpleAudioRecorder* is in beta and is published on nuget.org: https://www.nuget.org/packages/Xam.Plugin.SimpleAudioRecorder/
+| Plugin | NuGet | Status |
+|---|---|---|
+| **SimpleAudioPlayer** | [Xam.Plugin.SimpleAudioPlayer](https://www.nuget.org/packages/Xam.Plugin.SimpleAudioPlayer/) | Stable, over 1.1 million downloads |
+| **SimpleAudioRecorder** | [Xam.Plugin.SimpleAudioRecorder](https://www.nuget.org/packages/Xam.Plugin.SimpleAudioRecorder/) | Beta |
+| **SpeechToText** | none | Deprecated, code kept for reference |
 
-*SpeechToText* has been depricated but the code is available for reference
+The code stays here under the MIT licence. Fork it if you need it.
 
-
-
-## Contributions
-Contributions are welcome! If you find a bug want a feature added please report it.
-If you want to contribute code please file an issue, create a branch, and file a pull request.
+Thank you to everyone who filed issues, sent pull requests and shipped apps with these plugins.
