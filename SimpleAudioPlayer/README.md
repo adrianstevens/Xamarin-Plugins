@@ -1,3 +1,5 @@
+> **No longer maintained.** Xamarin reached end of support in May 2024. For .NET MAUI, use [Plugin.Maui.Audio](https://github.com/jfversluis/Plugin.Maui.Audio) by Gerald Versluis, which started from SimpleAudioPlayer.
+
 ### SimpleAudioPlayer
 SimpleAudioPlayer plays local files and audio data as a stream. This allows you to store audio data in a .NET Stanard Portable Class Library and play it on all supported platforms.
 
